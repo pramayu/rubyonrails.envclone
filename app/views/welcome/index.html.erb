@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
+	<%= stylesheet_link_tag    'welcome', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'welcome', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+		<div class="container con-custom">
+			<div class="navbar-header">
+				<%= link_to (image_tag "logo.png", class: "logo"), root_path, class: "navbar-brand" %>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Products</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Careers</a></li>
+				<li><a href="#">Community</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="main-content">
+		<div class="head">
+			<div class="capt">
+				<h2>Ready-to-use design assets from 11,172 independent creators</h2>
+				<h4>Graphics, fonts, themes, photos and more, starting at $2!</h4>
+				<a href="#">Explore Now</a>
+			</div>
+		</div>
+		<div class="reg">
+			<div class="container con-custom">
+				<div class="col-md-4 x">
+					<h5>Sign up now and download 6 design files!</h5>
+				</div>
+				<div class="col-md-4 y">
+					<a href="#">Continue <span class="fa fa-long-arrow-right"></span></a>
+				</div>
+				<div class="col-md-4 z">
+					<a href="#">Or Sign Up with Email</a>
+				</div>
+			</div>
+		</div>
+		<div class="product">
+			<div class="container con-custom">
+				<div class="title">
+					<h4>Start Exploring Our Products</h4>
+					<p>Buy and sell digital goods including themes, templates, photos, music, video and much more.</p>
+				</div>
+				<div class="thumb">
+					<div class="row">
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/templates.png" %>
+							<span class="hover">
+								<i class="fa fa-paper-plane-o"></i>
+								<h5>themeforest</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/graphic.png" %>
+							<span class="hover">
+								<i class="fa fa-object-group"></i>
+								<h5>graphicriver</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/code.png" %>
+							<span class="hover">
+								<i class="fa fa-code"></i>
+								<h5>codecanyon</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/video.png" %>
+							<span class="hover">
+								<i class="fa fa-random"></i>
+								<h5>videohipe</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/audio.png" %>
+							<span class="hover">
+								<i class="fa fa-bell-o"></i>
+								<h5>audiojungle</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/photo.png" %>
+							<span class="hover">
+								<i class="fa fa-camera-retro"></i>
+								<h5>photodune</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/3d.png" %>
+							<span class="hover">
+								<i class="fa fa-cubes"></i>
+								<h5>3docean</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/active.png" %>
+							<span class="hover">
+								<i class="fa fa-diamond"></i>
+								<h5>activeden</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+						<div class="col-xs-6 col-md-3 foo">
+							<%= link_to root_path, class: "thumbnail" do %>
+							<%= image_tag "products/mockup.png" %>
+							<span class="hover">
+								<i class="fa fa-tablet"></i>
+								<h5>mockups</h5>
+								<p>17298</p>
+							</span>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="community">
+			<div class="container con-custom">
+				<div class="title">
+					<h4>We Bet on the Community.</h4>
+					<p>If there's one thing that unites Envato Market, Envato Studio, and Tuts+, it's that when the community succeeds, we succeed.</p>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-md-4 kl">
+						 <div class="thumbnail">
+							<%= image_tag "comm/c1.png" %>
+						 	<div class="caption">
+							 	<h4>Character Design in Illustrator</h4>
+						        <p>Meh next level letterpress chambray gastropub, pickled chicharrones wolf viral +1 bushwick listicle pug mustache plaid. <span><a href="#" class="rm">Read more</a></span></p>
+							</div>
+						 </div>
+					</div>
+					<div class="col-sm-6 col-md-4 kl">
+						 <div class="thumbnail">
+							<%= image_tag "comm/c2.png" %>
+						 	<div class="caption">
+							 	<h4>Saru Design</h4>
+						        <p>Meh next level letterpress chambray gastropub, pickled chicharrones wolf viral +1 bushwick listicle pug mustache plaid. <span><a href="#" class="rm">Read more</a></span></p>
+							</div>
+						 </div>
+					</div>
+					<div class="col-sm-6 col-md-4 kl">
+						 <div class="thumbnail">
+							<%= image_tag "comm/c3.png" %>
+						 	<div class="caption">
+							 	<h4>Meet the Community</h4>
+						        <p>Meh next level letterpress chambray gastropub, pickled chicharrones wolf viral +1 bushwick listicle pug mustache plaid. <span><a href="#" class="rm">Read more</a></span></p>
+							</div>
+						 </div>
+					</div>
+					<span class="clear"></span>
+				</div>
+				<div class="lm">
+					<a href="#">Learn More</a>
+				</div>
+			</div>
+		</div>
+		<div class="career">
+			<div class="container con-custom">
+				<div class="title">
+					<h4>Come and Work with Us</h4>
+					<p>We're passionate about the web, and about enabling creators to make a living doing what they love.</p>
+				</div>
+				<div class="career-wow">
+					<div class="row">
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-users"></i>
+								<div class="capt">
+									<p>When the Community Succeeds, We Succeed</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-user-secret"></i>
+								<div class="capt">
+									<p>The Right People, The Right Environment</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-commenting"></i>
+								<div class="capt">
+									<p>Tell It Like It Is</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-gift"></i>
+								<div class="capt">
+									<p>Focus On Results</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-line-chart"></i>
+								<div class="capt">
+									<p>Not Just The Bottom Line</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-thumbs-up"></i>
+								<div class="capt">
+									<p>Fair Go</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-tasks"></i>
+								<div class="capt">
+									<p>Diverse and Inclusive</p>
+								</div>
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3 o">
+							<a href="#" class="thumbnails">
+								<i class="fa fa-paper-plane"></i>
+								<div class="capt">
+									<p>Head of Growth & Marketing</p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mark">
+			<div class="container con-custom">
+				<div class="title">
+					<h4>Earn with Us</h4>
+					<p>Open a shop to sell your goods, or became a Partner to earn as you share.</p>
+				</div>
+				<div class="col-md-6">
+					<div class="foo bn">
+						<i class="fa fa-bar-chart"></i>
+						<h4>Join Partner Program</h4>
+						<p>Earn cash as you share goods from the marketplace</p>
+						<a href="#">Become a Partner</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="foo bm">
+						<i class="fa fa-shopping-basket"></i>
+						<h4>Open a Shop</h4>
+						<p>Create a shop and reach millions of buyers</p>
+						<a href="#">Open a Shop</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container con-custom">
+			<div class="col-md-3 vh">
+				<a href="#">
+					<%= image_tag "logo.png", width: 50 %>
+				</a>
+				<p>OurMarket is platform for handcrafted, mousemade design content from independent creatives arround the world.</p>
+				<h5>Follow Us</h5>
+				<ul class="ko">
+					<li class="jo"><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li class="jo"><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li class="jo"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+					<li class="jo"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 vh">
+				<p class="jdl">Earn</p>
+				<ul class="lo">
+					<li class="li"><a href="#">Shop Benefits</a></li>
+					<li class="li"><a href="#">Partner Benefits</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 vh">
+				<p class="jdl">Community</p>
+				<ul class="lo">
+					<li class="li"><a href="#">Blog</a></li>
+					<li class="li"><a href="#">Discussions</a></li>
+					<li class="li"><a href="#">Collections</a></li>
+					<li class="li"><a href="#">Members</a></li>
+					<li class="li"><a href="#">Products</a></li>
+					<li class="li"><a href="#">Help Center</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 vh">
+				<p class="jdl">Goodies</p>
+				<ul class="lo">
+					<li class="li"><a href="#">Free Goods</a></li>
+					<li class="li"><a href="#">Adobe Extension</a></li>
+					<li class="li"><a href="#">Purchase Credits</a></li>
+					<li class="li"><a href="#">Gift Cards</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 vh">
+				<p class="jdl">Company</p>
+				<ul class="lo">
+					<li class="li"><a href="#">About</a></li>
+					<li class="li"><a href="#">Terms</a></li>
+					<li class="li"><a href="#">Brand</a></li>
+					<li class="li"><a href="#">Simple License</a></li>
+					<li class="li"><a href="#">Privacy Policy</a></li>
+					<li class="li"><a href="#">Jobs</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
