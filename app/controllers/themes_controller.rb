@@ -1,0 +1,3 @@
+class ThemesController < ApplicationController
+
+end
