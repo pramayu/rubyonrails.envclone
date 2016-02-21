@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Envclone</title>
+  <%= stylesheet_link_tag    'themes', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jsthemes', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="nav1 navbar navbar-default">
+		<div class="container con-custom-detail">
+			<div class="navbar-header">
+				<%= link_to (image_tag "logo.png", width: "20"), themes_path, class: "navbar-brand" %>
+			</div>
+			<ul class="menu2 nav navbar-nav navbar-right">
+				<li><a href="#" class="signup">Create an OurMarket Account</a></li>
+				<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+				<li><a href="#" class="signin">Sign In</a></li>
+			</ul>
+			<ul class="menu1 nav navbar-nav navbar-right">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Products</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Careers</a></li>
+				<li><a href="#">Community</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav2 navbar navbar-default">
+		<div class="container con-custom-detail">
+			<ul class="menu3 nav navbar-nav">
+				<li><a href="#" class="th">themeforest</a></li>
+				<li><a href="#" class="gr">graphicriver</a></li>
+				<li><a href="#" class="cc">codecanyon</a></li>
+				<li><a href="#" class="vh">videohive</a></li>
+				<li><a href="#" class="aj">audiojungle</a></li>
+				<li><a href="#" class="pd">photodune</a></li>
+				<li><a href="#" class="td">3docean</a></li>
+				<li><a href="#" class="ad">activeden</a></li>
+				<li><a href="#" class="mu">mockups</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="nav3 navbar navbar-default">
+		<div class="container con-custom-detail">
+			<ul class="menu4 nav navbar-nav">
+				<li><a href="#">All Items</a></li>
+				<li><a href="#">WordPress</a></li>
+				<li><a href="#">HTML</a></li>
+				<li><a href="#">Marketing</a></li>
+				<li><a href="#">CMS</a></li>
+				<li><a href="#">eCommerce</a></li>
+				<li><a href="#">LayerWP</a></li>
+				<li><a href="#">Muse</a></li>
+				<li><a href="#">UI Design</a></li>
+				<li><a href="#">Plugins</a></li>
+				<li><a href="#">More</a></li>	
+			</ul>
+		</div>
+	</div>
+	<div class="container con-custom-detail">
+		<%= yield %>
+	</div>
+
+</body>
+</html>

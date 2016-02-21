@@ -36,7 +36,11 @@ class ThemesController < ApplicationController
 	end
 
 	def update
-		
+		if @theme.update(theme_params)
+			redirect_to theme_path(@theme)
+		else
+			render 'edit'
+		end
 	end
 
 	def delete
@@ -45,7 +49,7 @@ class ThemesController < ApplicationController
 
 	private
 
-	def themes_params
+	def theme_params
 		params.require(:theme).permit(:name, :description, :price, :resolution, :layout, :demo, :category_id, :subcategory_id)
 	end
 
