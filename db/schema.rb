@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221154045) do
+ActiveRecord::Schema.define(version: 20160221154652) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20160221154045) do
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+
+  create_table "themes", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.decimal  "price",                     precision: 10
+    t.string   "resolution",  limit: 255
+    t.string   "layout",      limit: 255
+    t.string   "demo",        limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   add_foreign_key "subcategories", "categories"
 end
