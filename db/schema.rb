@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221154652) do
+ActiveRecord::Schema.define(version: 20160221161647) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -29,15 +29,22 @@ ActiveRecord::Schema.define(version: 20160221154652) do
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
 
   create_table "themes", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.decimal  "price",                     precision: 10
-    t.string   "resolution",  limit: 255
-    t.string   "layout",      limit: 255
-    t.string   "demo",        limit: 255
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.string   "name",           limit: 255
+    t.text     "description",    limit: 65535
+    t.decimal  "price",                        precision: 10
+    t.string   "resolution",     limit: 255
+    t.string   "layout",         limit: 255
+    t.string   "demo",           limit: 255
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.integer  "category_id",    limit: 4
+    t.integer  "subcategory_id", limit: 4
   end
 
+  add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree
+  add_index "themes", ["subcategory_id"], name: "index_themes_on_subcategory_id", using: :btree
+
   add_foreign_key "subcategories", "categories"
+  add_foreign_key "themes", "categories"
+  add_foreign_key "themes", "subcategories"
 end
