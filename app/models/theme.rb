@@ -14,4 +14,12 @@ class Theme < ActiveRecord::Base
 	has_many :fileincludethemes
 	has_many :fileincludes, through: :fileincludethemes
 
+	# framework to themes
+	has_many :frameworkthemes
+	has_many :frameworks, through: :frameworkthemes
+
+	#software to themes
+	has_many :softwarethemes
+	has_many :softwares, through: :softwarethemes
+
 end

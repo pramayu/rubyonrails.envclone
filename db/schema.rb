@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221182407) do
+ActiveRecord::Schema.define(version: 20160222020003) do
 
   create_table "browsers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -67,6 +67,38 @@ ActiveRecord::Schema.define(version: 20160221182407) do
   add_index "fileincludethemes", ["fileinclude_id"], name: "index_fileincludethemes_on_fileinclude_id", using: :btree
   add_index "fileincludethemes", ["theme_id"], name: "index_fileincludethemes_on_theme_id", using: :btree
 
+  create_table "frameworks", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "frameworkthemes", force: :cascade do |t|
+    t.integer  "theme_id",     limit: 4
+    t.integer  "framework_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "frameworkthemes", ["framework_id"], name: "index_frameworkthemes_on_framework_id", using: :btree
+  add_index "frameworkthemes", ["theme_id"], name: "index_frameworkthemes_on_theme_id", using: :btree
+
+  create_table "softwares", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "softwarethemes", force: :cascade do |t|
+    t.integer  "theme_id",    limit: 4
+    t.integer  "software_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "softwarethemes", ["software_id"], name: "index_softwarethemes_on_software_id", using: :btree
+  add_index "softwarethemes", ["theme_id"], name: "index_softwarethemes_on_theme_id", using: :btree
+
   create_table "subcategories", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.integer  "category_id", limit: 4
@@ -87,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160221182407) do
     t.datetime "updated_at",                                  null: false
     t.integer  "category_id",    limit: 4
     t.integer  "subcategory_id", limit: 4
+    t.string   "widget",         limit: 255
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree
@@ -98,6 +131,10 @@ ActiveRecord::Schema.define(version: 20160221182407) do
   add_foreign_key "compatiblethemes", "themes"
   add_foreign_key "fileincludethemes", "fileincludes"
   add_foreign_key "fileincludethemes", "themes"
+  add_foreign_key "frameworkthemes", "frameworks"
+  add_foreign_key "frameworkthemes", "themes"
+  add_foreign_key "softwarethemes", "softwares"
+  add_foreign_key "softwarethemes", "themes"
   add_foreign_key "subcategories", "categories"
   add_foreign_key "themes", "categories"
   add_foreign_key "themes", "subcategories"
