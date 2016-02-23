@@ -41,7 +41,7 @@
 		</div>
 		<div class="form-group">
 			<h2>ThemeForest Files Included</h2>
-			<%= select_tag("theme[fileinclude_ids][]", options_for_select(Fileinclude.select("name").where(id: [12..21]).order("name desc").collect {|fileinclude| [fileinclude.name, fileinclude.id]}, @theme.fileincludes.collect { |fileinclude| fileinclude.id }), {multiple: true, size: 5, class: "form-control"}) %>
+			<%= select_tag("theme[fileinclude_ids][]", options_for_select(Fileinclude.all.where(id: [12..21]).order("name desc").collect {|fileinclude| [fileinclude.name, fileinclude.id]}, @theme.fileincludes.collect { |fileinclude| fileinclude.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
 		<div class="form-group">
 			<%= f.select :adobe, options_for_select([["CS","cs"], ["CS2","cs2"], ["CS3","cs3"], ["CS4","cs4"], ["CS5","cs5"], ["CS5.5","cs5.5"], ["CS6", "cs6"], ["CC","cc"], ["CC 2014","cc2014"], ["CC 2015","cc2015"], ["N/A","na"]]),  { prompt: "Minimum Adobe CS Version" }, { class: "form-control" } %>

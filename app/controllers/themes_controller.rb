@@ -32,7 +32,10 @@ class ThemesController < ApplicationController
 	end
 
 	def edit
-		
+		respond_to do |format|
+			format.html
+			format.json
+		end
 	end
 
 	def update
@@ -43,14 +46,14 @@ class ThemesController < ApplicationController
 		end
 	end
 
-	def delete
+	def destroy
 		
 	end
 
 	private
 
 	def theme_params
-		params.require(:theme).permit(:name, :description, :price, :resolution, :layered, :adobe, :pixel, :print, :widget, :layout, :demo, :column, :category_id, :subcategory_id, browser_ids:[], compatible_ids:[], device_ids:[], email_ids:[], fileinclude_ids:[], framework_ids:[], software_ids:[], )
+		params.require(:theme).permit(:name, :description, :price, :resolution, :layered, :adobe, :pixel, :print, :widget, :layout, :demo, :column, :category_id, :subcategory_id, browser_ids: [], compatible_ids: [], device_ids: [], email_ids: [], fileinclude_ids: [], framework_ids: [], software_ids: [] )
 	end
 
 	def find_themes

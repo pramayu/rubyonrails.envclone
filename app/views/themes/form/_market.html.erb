@@ -34,7 +34,7 @@
 		</div>
 		<div class="form-group cbrowser">
 			<h2>Compatible Browser</h2>
-			<%= select_tag("theme[browser_ids][]", options_for_select(Browser.select("name").where(id: 11..16).collect {|browser| [browser.name, browser.id]}, @theme.browsers.collect { |browser| browser.id }), {multiple: true, size: 5, class: "form-control"}) %>
+			<%= select_tag("theme[browser_ids][]", options_for_select(Browser.all.where(id: 11..16).collect {|browser| [browser.name, browser.id]}, @theme.browsers.collect { |browser| browser.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
 		<div class="form-group wp">
 			<h2>Compatible Email Services</h2>
@@ -42,11 +42,11 @@
 		</div>
 		<div class="form-group wp">
 			<h2>Compatible With</h2>
-			<%= select_tag("theme[compatible_ids][]", options_for_select(Compatible.select("name").where(id: 6..19).collect {|compatible| [compatible.name, compatible.id]}, @theme.compatibles.collect { |compatible| compatible.id }), {multiple: true, size: 5, class: "form-control"}) %>
+			<%= select_tag("theme[compatible_ids][]", options_for_select(Compatible.all.where(id: 6..19).collect {|compatible| [compatible.name, compatible.id]}, @theme.compatibles.collect { |compatible| compatible.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
 		<div class="form-group">
 			<h2>ThemeForest Files Included</h2>
-			<%= select_tag("theme[fileinclude_ids][]", options_for_select(Fileinclude.select("name").where(id: [1..10]).order("name desc").collect {|fileinclude| [fileinclude.name, fileinclude.id]}, @theme.fileincludes.collect { |fileinclude| fileinclude.id }), {multiple: true, size: 5, class: "form-control"}) %>
+			<%= select_tag("theme[fileinclude_ids][]", options_for_select(Fileinclude.all.where(id: [1..10]).order("name desc").collect {|fileinclude| [fileinclude.name, fileinclude.id]}, @theme.fileincludes.collect { |fileinclude| fileinclude.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
 		<div class="form-group">
 			<%= f.select :column, options_for_select([["1","1"], ["2","2"], ["3","3"], ["4+","4+"], ["N/A","na"]]),  { prompt: "columns" }, { class: "form-control" } %>

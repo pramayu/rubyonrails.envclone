@@ -1,2 +1,23 @@
-<h1>EditPage</h1>
+<% if @theme.category_id == 1001 %>
+<%= render "themes/form/wp" %>
+<% elsif @theme.category_id == 1002 %>
+<%= render "themes/form/cms" %>
+<% elsif @theme.category_id == 1003 %>
+<%= render "themes/form/ecom" %>
+<% elsif @theme.category_id == 1004 %>
+<%= render "themes/form/blog" %>
+<% elsif @theme.category_id == 1005 %>
+<%= render "themes/form/market" %>
+<% elsif @theme.category_id == 1006 %>
+<%= render "themes/form/forum" %>
+<% elsif @theme.category_id == 1007 %>
+<%= render "themes/form/psd" %>
+<% elsif @theme.category_id == 1008 %>
+<%= render "themes/form/muse" %>
+<% elsif @theme.category_id == 1009 %>
+<%= render "themes/form/sketch" %>
+<% elsif @theme.category_id == 1010 %>
+<%= render "themes/form/type" %>
+<% elsif @theme.category_id == 1011 %>
 <%= render "themes/form/static" %>
+<% end %>
