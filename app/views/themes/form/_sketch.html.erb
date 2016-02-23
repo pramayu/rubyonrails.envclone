@@ -1,0 +1,36 @@
+<%= simple_form_for @theme do |f| %>
+	<div class="name_des">
+		<div class="form-group">
+			<%= f.text_field :name, class: "form-control", label: false, placeholder: "name" %>
+			<span>Maximum 100 characters. Follow our Item Title Naming Conventions.</span>
+		</div>
+		<div class="form-group">
+			<%= f.text_area :description, class: "form-control", label:false, placeholder: "description" %>
+			<span>This field is used for search, so please be descriptive! If you're linking to external images see our image performance tips for authors.</span>
+		</div>
+		<div class="form-group">
+			<%= f.text_field :price, class: "form-control", label:false, placeholder: "price" %>
+		</div>
+	</div>
+	<div class="supp">
+		<h2>Supporting your item</h2>
+		<p>You have not chosen a support preference for your items. Buyers will see your item as not-supported. To change your support settings go to your item support settings.</p>
+	</div>
+	<div class="files_up">
+		<h2>Choose Files</h2>
+		<div class="inf">
+			<p>For files over 500MB we recommend uploading via FTP. The maximum file size allowed is 3GB - please ensure compression has been optimized before uploading.</p>
+		</div>
+	</div>
+	<div id="wordpress">
+		<div class="form-group">
+			<h2>Software Version</h2>
+			<%= select_tag("theme[software_ids][]", options_for_select(Software.select("name").where(id: [68..70, 19]).order("name desc").collect {|software| [software.name, software.id]}, @theme.softwares.collect { |software| software.id }), {multiple: true, size: 5, class: "form-control"}) %>
+		</div>
+		<div class="form-group">
+			<h2>ThemeForest Files Included</h2>
+			<%= select_tag("theme[fileinclude_ids][]", options_for_select(Fileinclude.select("name").where(id: 11).order("name desc").collect {|fileinclude| [fileinclude.name, fileinclude.id]}, @theme.fileincludes.collect { |fileinclude| fileinclude.id }), {multiple: true, size: 5, class: "form-control"}) %>
+		</div>
+	</div>
+	<%= f.submit "Post", class: "btn btn-default" %>
+<% end %>

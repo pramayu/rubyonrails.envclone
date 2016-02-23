@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222020003) do
+ActiveRecord::Schema.define(version: 20160223023420) do
 
   create_table "browsers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -50,6 +50,38 @@ ActiveRecord::Schema.define(version: 20160222020003) do
 
   add_index "compatiblethemes", ["compatible_id"], name: "index_compatiblethemes_on_compatible_id", using: :btree
   add_index "compatiblethemes", ["theme_id"], name: "index_compatiblethemes_on_theme_id", using: :btree
+
+  create_table "devices", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "devicethemes", force: :cascade do |t|
+    t.integer  "theme_id",   limit: 4
+    t.integer  "device_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "devicethemes", ["device_id"], name: "index_devicethemes_on_device_id", using: :btree
+  add_index "devicethemes", ["theme_id"], name: "index_devicethemes_on_theme_id", using: :btree
+
+  create_table "emails", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "emailthemes", force: :cascade do |t|
+    t.integer  "theme_id",   limit: 4
+    t.integer  "email_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "emailthemes", ["email_id"], name: "index_emailthemes_on_email_id", using: :btree
+  add_index "emailthemes", ["theme_id"], name: "index_emailthemes_on_theme_id", using: :btree
 
   create_table "fileincludes", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -120,6 +152,11 @@ ActiveRecord::Schema.define(version: 20160222020003) do
     t.integer  "category_id",    limit: 4
     t.integer  "subcategory_id", limit: 4
     t.string   "widget",         limit: 255
+    t.string   "layered",        limit: 255
+    t.string   "adobe",          limit: 255
+    t.string   "pixel",          limit: 255
+    t.string   "print",          limit: 255
+    t.string   "column",         limit: 255
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree
@@ -129,6 +166,10 @@ ActiveRecord::Schema.define(version: 20160222020003) do
   add_foreign_key "browserthemes", "themes"
   add_foreign_key "compatiblethemes", "compatibles"
   add_foreign_key "compatiblethemes", "themes"
+  add_foreign_key "devicethemes", "devices"
+  add_foreign_key "devicethemes", "themes"
+  add_foreign_key "emailthemes", "emails"
+  add_foreign_key "emailthemes", "themes"
   add_foreign_key "fileincludethemes", "fileincludes"
   add_foreign_key "fileincludethemes", "themes"
   add_foreign_key "frameworkthemes", "frameworks"

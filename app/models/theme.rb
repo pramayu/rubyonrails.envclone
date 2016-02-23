@@ -1,4 +1,6 @@
 class Theme < ActiveRecord::Base
+
+	# category and subcategory to themes
 	belongs_to :category
 	belongs_to :subcategory
 
@@ -18,8 +20,16 @@ class Theme < ActiveRecord::Base
 	has_many :frameworkthemes
 	has_many :frameworks, through: :frameworkthemes
 
-	#software to themes
+	# software to themes
 	has_many :softwarethemes
 	has_many :softwares, through: :softwarethemes
+
+	# email to themes
+	has_many :emailthemes
+	has_many :emails, through: :emailthemes
+
+	# device to themes
+	has_many :devicethemes
+	has_many :devices, through: :devicethemes
 
 end
