@@ -12,6 +12,7 @@ class ThemesController < ApplicationController
 
 	def new
 		@theme = Theme.new
+		@theme.assets.build
 		# @themeview = @theme.themeviews.build
 		# respond_to do |format|
 		# 	format.html
@@ -32,6 +33,7 @@ class ThemesController < ApplicationController
 	end
 
 	def edit
+		@theme.assets.build
 		respond_to do |format|
 			format.html
 			format.json
@@ -40,6 +42,9 @@ class ThemesController < ApplicationController
 
 	def update
 		if @theme.update(theme_params)
+			if params[:previews]
+				params[:previews].each { |preview| @theme.assets.create(preview: preview) }
+			end
 			redirect_to theme_path(@theme)
 		else
 			render 'edit'
@@ -53,7 +58,7 @@ class ThemesController < ApplicationController
 	private
 
 	def theme_params
-		params.require(:theme).permit(:name, :description, :price, :resolution, :layered, :adobe, :pixel, :print, :widget, :layout, :demo, :column, :category_id, :subcategory_id, browser_ids: [], compatible_ids: [], device_ids: [], email_ids: [], fileinclude_ids: [], framework_ids: [], software_ids: [] )
+		params.require(:theme).permit(:name, :description, :price, :resolution, :thumb, :layered, :adobe, :pixel, :clip, :print, :widget, :layout, :demo, :column, :category_id, :subcategory_id, browser_ids: [], compatible_ids: [], device_ids: [], email_ids: [], fileinclude_ids: [], framework_ids: [], software_ids: [] )
 	end
 
 	def find_themes

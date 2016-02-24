@@ -32,4 +32,16 @@ class Theme < ActiveRecord::Base
 	has_many :devicethemes
 	has_many :devices, through: :devicethemes
 
+	# paperclip thumb
+
+	has_attached_file :thumb, styles: { large: "300x200#", medium: "80x80#" }
+	validates_attachment_content_type :thumb, content_type: /\Aimage\/.*\Z/
+
+	# upload preview
+	has_many :assets
+
+	# paperclip clip
+	has_attached_file :clip
+  validates_attachment_content_type :clip, content_type: ["application/zip", "application/rar"]
+
 end

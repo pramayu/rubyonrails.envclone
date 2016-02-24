@@ -18,6 +18,21 @@
 	</div>
 	<div class="files_up">
 		<h2>Choose Files</h2>
+		<div class="form-group">
+			<span>Thumbnail: </span>
+			<%= f.input :thumb, label: false %>
+			<span>JPEG or PNG 80x80px Thumbnail</span>
+		</div>
+		<div class="form-group">
+			<span>Preview</span>
+			<%= file_field_tag "previews[]", type: :file, multiple: true %>
+			<span> File of images (png/jpg) w/ optional text descriptions for display on the site</span>
+		</div>
+		<div class="form-group">
+			<span>Main File</span>
+			<%= f.input :clip, label: false %>
+			<span>ZIP - All files for buyers, not including preview images</span>
+		</div>
 		<div class="inf">
 			<p>For files over 500MB we recommend uploading via FTP. The maximum file size allowed is 3GB - please ensure compression has been optimized before uploading.</p>
 		</div>

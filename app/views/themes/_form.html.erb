@@ -1,13 +1,19 @@
 <%= simple_form_for @theme do |f| %>
 	<div id="selectme">
-		<div class="form-group">
-			<%= f.collection_select :category_id, Category.order(:name), :id, :name, { prompt: "Site Templates" }, {  class: "form-control"} %>
+		<div class="col-md-6 lfds">
+			<div class="fieldset">
+				<%= f.collection_select :category_id, Category.order(:name), :id, :name, { prompt: "Site Templates" }, {  class: "form-control cat-form"} %>
+			</div>
+			<div class="fieldset">
+				<%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, { prompt: "Categories" }, { class: "form-control subcat cat-form" } %>
+			</div>
 		</div>
-		<div class="form-group">
-			<%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, { prompt: "Categories" }, { class: "form-control" } %>
+		<div class="col-md-6 rfds">
+			<div class="catbtn">
+				<%= f.submit "Next", class: "btn btn-default btn-ups" %>
+			</div>
 		</div>
+		<div class="clear"></div>
 	</div>
-	<div class="catbtn">
-		<%= f.submit "Upload", class: "btn btn-default btn-ups" %>
-	</div>
+	
 <% end %>

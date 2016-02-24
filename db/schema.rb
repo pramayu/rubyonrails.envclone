@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223023420) do
+ActiveRecord::Schema.define(version: 20160224033111) do
+
+  create_table "assets", force: :cascade do |t|
+    t.integer  "theme_id",             limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "preview_file_name",    limit: 255
+    t.string   "preview_content_type", limit: 255
+    t.integer  "preview_file_size",    limit: 4
+    t.datetime "preview_updated_at"
+  end
+
+  add_index "assets", ["theme_id"], name: "index_assets_on_theme_id", using: :btree
 
   create_table "browsers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -141,27 +153,36 @@ ActiveRecord::Schema.define(version: 20160223023420) do
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
 
   create_table "themes", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.text     "description",    limit: 65535
-    t.decimal  "price",                        precision: 10
-    t.string   "resolution",     limit: 255
-    t.string   "layout",         limit: 255
-    t.string   "demo",           limit: 255
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.integer  "category_id",    limit: 4
-    t.integer  "subcategory_id", limit: 4
-    t.string   "widget",         limit: 255
-    t.string   "layered",        limit: 255
-    t.string   "adobe",          limit: 255
-    t.string   "pixel",          limit: 255
-    t.string   "print",          limit: 255
-    t.string   "column",         limit: 255
+    t.string   "name",               limit: 255
+    t.text     "description",        limit: 65535
+    t.decimal  "price",                            precision: 10
+    t.string   "resolution",         limit: 255
+    t.string   "layout",             limit: 255
+    t.string   "demo",               limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.integer  "category_id",        limit: 4
+    t.integer  "subcategory_id",     limit: 4
+    t.string   "widget",             limit: 255
+    t.string   "layered",            limit: 255
+    t.string   "adobe",              limit: 255
+    t.string   "pixel",              limit: 255
+    t.string   "print",              limit: 255
+    t.string   "column",             limit: 255
+    t.string   "thumb_file_name",    limit: 255
+    t.string   "thumb_content_type", limit: 255
+    t.integer  "thumb_file_size",    limit: 4
+    t.datetime "thumb_updated_at"
+    t.string   "clip_file_name",     limit: 255
+    t.string   "clip_content_type",  limit: 255
+    t.integer  "clip_file_size",     limit: 4
+    t.datetime "clip_updated_at"
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree
   add_index "themes", ["subcategory_id"], name: "index_themes_on_subcategory_id", using: :btree
 
+  add_foreign_key "assets", "themes"
   add_foreign_key "browserthemes", "browsers"
   add_foreign_key "browserthemes", "themes"
   add_foreign_key "compatiblethemes", "compatibles"
