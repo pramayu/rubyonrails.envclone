@@ -58,7 +58,7 @@ class ThemesController < ApplicationController
 	private
 
 	def theme_params
-		params.require(:theme).permit(:name, :description, :price, :resolution, :thumb, :layered, :adobe, :pixel, :clip, :print, :widget, :layout, :demo, :column, :category_id, :subcategory_id, browser_ids: [], compatible_ids: [], device_ids: [], email_ids: [], fileinclude_ids: [], framework_ids: [], software_ids: [] )
+		params.require(:theme).permit(:name, :description, :price, :tag_list, :resolution, :thumb, :message, :layered, :adobe, :pixel, :clip, :print, :widget, :layout, :demo, :column, :category_id, :subcategory_id, browser_ids: [], compatible_ids: [], device_ids: [], email_ids: [], fileinclude_ids: [], framework_ids: [], software_ids: [] )
 	end
 
 	def find_themes

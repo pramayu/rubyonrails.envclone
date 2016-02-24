@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224033111) do
+ActiveRecord::Schema.define(version: 20160224124454) do
 
   create_table "assets", force: :cascade do |t|
     t.integer  "theme_id",             limit: 4
@@ -152,6 +152,26 @@ ActiveRecord::Schema.define(version: 20160224033111) do
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",        limit: 4
+    t.integer  "taggable_id",   limit: 4
+    t.string   "taggable_type", limit: 255
+    t.integer  "tagger_id",     limit: 4
+    t.string   "tagger_type",   limit: 255
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name",           limit: 255
+    t.integer "taggings_count", limit: 4,   default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
   create_table "themes", force: :cascade do |t|
     t.string   "name",               limit: 255
     t.text     "description",        limit: 65535
@@ -177,6 +197,7 @@ ActiveRecord::Schema.define(version: 20160224033111) do
     t.string   "clip_content_type",  limit: 255
     t.integer  "clip_file_size",     limit: 4
     t.datetime "clip_updated_at"
+    t.text     "message",            limit: 65535
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree

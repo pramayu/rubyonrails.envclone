@@ -24,5 +24,4 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # end
 gem 'simple_form'
 gem "paperclip", "~> 4.3"
-gem "acts-as-taggable-on"
-
+gem 'acts-as-taggable-on', '~> 3.4'

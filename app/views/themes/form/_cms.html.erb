@@ -1,5 +1,6 @@
 <%= simple_form_for @theme do |f| %>
 	<div class="name_des">
+		<h4>Name &amp; Description</h4>
 		<div class="form-group">
 			<%= f.text_field :name, class: "form-control", label: false, placeholder: "name" %>
 			<span>Maximum 100 characters. Follow our Item Title Naming Conventions.</span>
@@ -13,71 +14,92 @@
 		</div>
 	</div>
 	<div class="supp">
-		<h2>Supporting your item</h2>
+		<h4>Supporting your item</h4>
 		<p>You have not chosen a support preference for your items. Buyers will see your item as not-supported. To change your support settings go to your item support settings.</p>
 	</div>
 	<div class="files_up">
-		<h2>Choose Files</h2>
-		<div class="form-group">
-			<span>Thumbnail: </span>
-			<%= f.input :thumb, label: false %>
-			<span>JPEG or PNG 80x80px Thumbnail</span>
+		<h4>Choose Files</h4>
+		<div class="form-group cococo">
+			<label for="theme_thumb" class="thumb-up"><span id="em_lbl">Select Thumbnail to Upload</span></label>
+			<%= f.input :thumb, label: false, multiple: true %>
+			<span class="ooop">JPEG or PNG 80x80px Thumbnail</span>
 		</div>
-		<div class="form-group">
-			<span>Preview</span>
-			<%= file_field_tag "previews[]", type: :file, multiple: true %>
-			<span> File of images (png/jpg) w/ optional text descriptions for display on the site</span>
+		<div class="form-group cococo">
+			<label for="previews_" class="thumb-up"><span id="span_lbl">Select Preview to Upload</span></label>
+			<%= file_field_tag "previews[]", type: :file, multiple: true %> <br>
+			<span class="ooop"> File of images (png/jpg) w/ optional text descriptions for display on the site</span>
 		</div>
-		<div class="form-group">
-			<span>Main File</span>
+		<div class="form-group cococo">
+			<label for="theme_clip" class="thumb-up"><span id="clip-lbl">Select Files to Upload</span></label>
 			<%= f.input :clip, label: false %>
-			<span>ZIP - All files for buyers, not including preview images</span>
+			<span class="ooop">ZIP - All files for buyers, not including preview images</span>
 		</div>
-		<div class="inf">
+		<div class="infos">
 			<p>For files over 500MB we recommend uploading via FTP. The maximum file size allowed is 3GB - please ensure compression has been optimized before uploading.</p>
 		</div>
 	</div>
-	<div id="wordpress">
+	<div id="attrib">
+		<h4>Attributes</h4><br>
 		<div class="form-group wp">
-			<p>High Resolution</p>
-			<%= f.radio_button :resolution, 'Yes'%>
-			<span>Yes</span>
-			<%= f.radio_button :resolution, 'No', checked: "checked" %>
-			<span>No</span>
-			<%= f.radio_button :resolution, 'NA' %>
-			<span>N/A</span>
+			<div class="col-md-3"><span>High Resolution </span></div>
+			<div class="col-md-7">
+				: <%= f.radio_button :resolution, 'Yes'%>
+				<span>Yes</span>
+				<%= f.radio_button :resolution, 'No', checked: "checked" %>
+				<span>No</span>
+				<%= f.radio_button :resolution, 'Na', checked: "checked" %>
+				<span>N/A</span>
+			</div>
+			<div class="clear"></div>
 		</div>
-		<div class="form-group cbrowser">
+		<div class="form-group wtfs">
 			<h2>Compatible Browser</h2>
 			<%= select_tag("theme[browser_ids][]", options_for_select(Browser.all.where(id: 1..10).collect {|browser| [browser.name, browser.id]}, @theme.browsers.collect { |browser| browser.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
-		<div class="form-group wp">
+		<div class="form-group wtfs">
 			<h2>Compatible With</h2>
 			<%= select_tag("theme[compatible_ids][]", options_for_select(Compatible.all.where(id: 1..19).collect {|compatible| [compatible.name, compatible.id]}, @theme.compatibles.collect { |compatible| compatible.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
-		<div class="form-group wp">
+		<div class="form-group wtfs">
 			<h2>Framework</h2>
 			<%= select_tag("theme[framework_ids][]", options_for_select(Framework.all.where(id: 24..29).collect {|framework| [framework.name, framework.id]}, @theme.frameworks.collect { |framework| framework.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
-		<div class="form-group">
+		<div class="form-group wtfs">
 			<h2>Software Version</h2>
 			<%= select_tag("theme[software_ids][]", options_for_select(Software.all.where(id: [20..37, 19]).order("name asc").collect {|software| [software.name, software.id]}, @theme.softwares.collect { |software| software.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
-		<div class="form-group">
+		<div class="form-group wtfs">
 			<h2>ThemeForest Files Included</h2>
 			<%= select_tag("theme[fileinclude_ids][]", options_for_select(Fileinclude.all.where(id: [1..10]).order("name desc").collect {|fileinclude| [fileinclude.name, fileinclude.id]}, @theme.fileincludes.collect { |fileinclude| fileinclude.id }), {multiple: true, size: 5, class: "form-control"}) %>
 		</div>
-		<div class="form-group">
+		<div class="form-group wtfs">
 			<%= f.select :column, options_for_select([["1","1"], ["2","2"], ["3","3"], ["4+","4+"], ["N/A","na"]]),  { prompt: "columns" }, { class: "form-control" } %>
 			<span>How many column in your templates?</span>
 		</div>
-		<div class="form-group">
+		<div class="form-group wtfs">
 			<%= f.select :layout, options_for_select([["Fixed","fixed"], ["Liquid","liquid"], ["Responsive","responsive"], ["N/A","na"]]), { prompt: "layout" }, { class: "form-control" } %>
 			<span>Does this layout stretch when resized horizontally (liquid)? Or does it stay the same (fixed)? or Responsive</span>
 		</div>
-		<div class="form-group">
+		<div class="form-group wtfs">
 			<%= f.text_field :demo, class: "form-control", label: false, placeholder: "demo URL" %>
 		</div>
+		<div class="infos">
+			<p>Some of our fields allow you to select multiple values. Please use the CTRL key (PC) or COMMAND key (Mac) to select multiple items.</p>
+		</div>
 	</div>
-	<%= f.submit "Post", class: "btn btn-default" %>
+	<div class="tags">
+		<div class="form-group jksg">
+			<h2>Tags</h2>
+			<%= f.text_area :tag_list, label: false, class: "form-control" %>
+			<span>Maximum of 15 keywords covering features, usage, and styling. Keywords should all be in lowercase and separated by commas. e.g. photography, gallery, modern, jquery, wordpress theme</span>
+		</div>
+	</div>
+
+	<div class="tags">
+		<div class="form-group jksg">
+			<h2>Message to the Reviewer</h2>
+			<%= f.input :message, label:false, class: "form-control" %>
+		</div>
+		<%= f.submit "Post", class: "btn btn-default btn-upa" %>
+	</div>
 <% end %>

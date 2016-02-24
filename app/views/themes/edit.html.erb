@@ -27,7 +27,7 @@
 		<% elsif @theme.category_id == 1005 %>
 			<%= render "themes/form/market" %>
 		<% elsif @theme.category_id == 1006 %>
-			<%= render "themes/form/forum" %>
+			<%= render "themes/form/forums" %>
 		<% elsif @theme.category_id == 1007 %>
 			<%= render "themes/form/psd" %>
 		<% elsif @theme.category_id == 1008 %>
@@ -39,6 +39,69 @@
 		<% elsif @theme.category_id == 1011 %>
 			<%= render "themes/form/static" %>
 		<% end %>
+	</div>
+	<div class="col-md-6 edit-right">
+		<div class="edit-cat oodh">
+			<div class="titlesd">
+				<h4>Switch Upload Category</h4>
+			</div>
+			<div class="conhfs">
+				<%= simple_form_for @theme do |f| %>
+					<div class="cojhag">
+						<div class="form-group ryt">
+							<%= f.collection_select :category_id, Category.order(:name), :id, :name, { prompt: "Site Templates" }, {  class: "form-control cat-form"} %>
+						</div>
+						<div class="form-group ryt">
+							<%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, { prompt: "Categories" }, { class: "form-control subcat cat-form" } %>
+						</div>
+					</div>
+					<div class="sfrfds">
+						<div class="catbtn">
+							<%= f.submit "Switch Category", class: "btn btn-default btn-upjk" %>
+						</div>
+					</div>
+					<div class="clear"></div>
+				<% end %>
+			</div>
+		</div>
+		<div class="gets-info oodh">
+			<div class="titlesd">
+				<h4>Get your item accepted</h4>
+			</div>
+			<div class="conhfs">
+				<span>To give your item the best chance possible to be accepted, please make sure you've:</span><br><br>
+				<ul class="lst-y">
+					<li>Read and follow the upload instructions.</li>
+					<li>Added useful tags and ensured they're spelled correctly (this helps buyers find your file).</li>
+					<li>Added a thorough and useful item description (this also helps buyers find your file).</li>
+				</ul>
+				<span>If you've done all that, you're ready to upload. Thanks for selling with Envato!</span>
+			</div>
+		</div>
+		<div class="trouble oodh">
+			<div class="titlesd">
+				<h4>Trouble Uploading?</h4>
+			</div>
+			<div class="conhfs">
+				<span>Some users have experienced problems uploading. We've compiled a list of things to check first which might be of help. We're always working on improving our uploading infrastructure - but if you continue to experience problems please contact support.</span>
+			</div>
+		</div>
+		<div class="corrupt oodh">
+			<div class="titlesd">
+				<h4>Corrupt Zip Files</h4>
+			</div>
+			<div class="conhfs">
+				<span>The following archive utilities have been found to generate non-standard zip files that our server is often unable to decompress:
+
+</span><br><br>
+				<ul class="lst-y">
+					<li>7zip.</li>
+					<li>lzarc</li>
+					<li>WinZip (Latest version)</li>
+				</ul>
+				<span>Please use another archive utility to reduce the chance of problems with your uploads.</span>
+			</div>
+		</div>
 	</div>
 	
 </div>

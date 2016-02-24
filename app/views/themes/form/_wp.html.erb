@@ -47,7 +47,7 @@
 				<span>Yes</span>
 				<%= f.radio_button :resolution, 'No', checked: "checked" %>
 				<span>No</span>
-				<%= f.radio_button :resolution, 'Na', checked: "checked" %>
+				<%= f.radio_button :resolution, 'Na' %>
 				<span>N/A</span>
 			</div>
 			<div class="clear"></div>
@@ -102,6 +102,20 @@
 		<div class="infos">
 			<p>Some of our fields allow you to select multiple values. Please use the CTRL key (PC) or COMMAND key (Mac) to select multiple items.</p>
 		</div>
-		<%= f.submit "Post", class: "btn btn-default" %>
+	</div>
+	<div class="tags">
+		<div class="form-group jksg">
+			<h2>Tags</h2>
+			<%= f.text_area :tag_list, label: false, class: "form-control" %>
+			<span>Maximum of 15 keywords covering features, usage, and styling. Keywords should all be in lowercase and separated by commas. e.g. photography, gallery, modern, jquery, wordpress theme</span>
+		</div>
+	</div>
+
+	<div class="tags">
+		<div class="form-group jksg">
+			<h2>Message to the Reviewer</h2>
+			<%= f.input :message, label:false, class: "form-control" %>
+		</div>
+		<%= f.submit "Post", class: "btn btn-default btn-upa" %>
 	</div>
 <% end %>

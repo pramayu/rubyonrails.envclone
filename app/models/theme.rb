@@ -1,5 +1,7 @@
 class Theme < ActiveRecord::Base
 
+	acts_as_taggable
+
 	# category and subcategory to themes
 	belongs_to :category
 	belongs_to :subcategory
