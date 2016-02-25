@@ -44,6 +44,8 @@ class Theme < ActiveRecord::Base
 
 	# paperclip clip
 	has_attached_file :clip
-  validates_attachment_content_type :clip, content_type: ["application/zip", "application/rar"]
+  	validates_attachment_content_type :clip, content_type: ["application/zip", "application/rar"]
+
+  	# tags all
 
 end

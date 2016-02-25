@@ -71,7 +71,52 @@
 								<% end %>
 							</li>
 						</ul>
+						<div class="port">
+							<%= link_to "Portofolio", themes_path, class: "porto" %>
+						</div>
 					</div>
+				</div>
+				<div class="sum-sales">
+					<div class="sales">
+						<p class="sum-sa boo">
+							<span>249</span> Sales
+						</p>
+					</div>
+					<div class="com-ent">
+						<p class="boo com-ent-t">
+							<span>45</span> Comments
+						</p>
+					</div>
+					<div class="rate-s">
+						<p class="rate-f boo">
+							<span></span>Buyer Rating
+						</p>
+					</div>
+				</div>
+				<div class="info-product">
+					<% if @theme.category_id == 1001 %>
+						<%= render "themes/info_product/wp" %>
+					<% elsif @theme.category_id == 1002 %>
+						<%= render "themes/info_product/cms" %>
+					<% elsif @theme.category_id == 1003 %>
+						<%= render "themes/info_product/ecom" %>
+					<% elsif @theme.category_id == 1004 %>
+						<%= render "themes/info_product/blog" %>
+					<% elsif @theme.category_id == 1005 %>
+						<%= render "themes/info_product/market" %>
+					<% elsif @theme.category_id == 1006 %>
+						<%= render "themes/info_product/forums" %>
+					<% elsif @theme.category_id == 1007 %>
+						<%= render "themes/info_product/psd" %>
+					<% elsif @theme.category_id == 1008 %>
+						<%= render "themes/info_product/muse" %>
+					<% elsif @theme.category_id == 1009 %>
+						<%= render "themes/info_product/sketch" %>
+					<% elsif @theme.category_id == 1010 %>
+						<%= render "themes/info_product/type" %>
+					<% elsif @theme.category_id == 1011 %>
+						<%= render "themes/info_product/static" %>
+					<% end %>
 				</div>
 			</div>
 			<div class="clear"></div>

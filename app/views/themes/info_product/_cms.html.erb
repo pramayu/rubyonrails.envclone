@@ -1,0 +1,48 @@
+<div class="created pro-duct">
+	<p class="crt">Created : <span><%= @theme.created_at.strftime("%d %B %Y") %></span></p>
+</div>
+<div class="updated pro-duct">
+	<p class="crt">Last Update	: <span><%= @theme.updated_at.strftime("%d %B %Y") %></span></p>
+</div>
+<div class="resolution pro-duct">
+	<p class="crt">High Resolution : <span><%= @theme.resolution %></span></p>
+</div>
+<div class="browser pro-duct">
+	<p class="crt">Compatible Browsers :
+		<% @theme.browsers.each do |browser| %>
+		<span><%= browser.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="compatible pro-duct">
+	<p class="crt">Compatible With :
+		<% @theme.compatibles.each do |compatible| %>
+		<span><%= compatible.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="software pro-duct">
+	<p class="crt">Software Version :
+		<% @theme.softwares.each do |software| %>
+		<span><%= software.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="include pro-duct">
+	<p class="crt">ThemeForest Files Included :
+		<% @theme.fileincludes.each do |include| %>
+		<span><%= include.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="column pro-duct">
+	<p class="crt">Columns : <span><%= @theme.column %></span></p>
+</div>
+<div class="layout pro-duct">
+	<p class="crt">Layout : <span><%= @theme.layout %></span></p>
+</div>
+<div class="tag pro-duct">
+	<p class="crt">Tags : 
+		<span><%= raw @theme.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></span>
+	</p>
+</div>

@@ -37,7 +37,7 @@ $border : #E1E8ED;
 }
 
 .vbdgfd{
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	margin-top: 2px;
 	color: #808080;
 	font-size: 13px;
@@ -110,9 +110,24 @@ $border : #E1E8ED;
 					margin-bottom: 5px;
 					margin-top: 5px;
 				}
+				a {
+					color: #03C9A9;
+					text-decoration: none;
+					font-family: "Roboto", Helvetica, Arial;
+				}
+				ul {
+					li {
+						font-family: "Roboto", Helvetica, Arial;
+						font-size: 14px;
+						font-weight: 300;
+						color: #808080;
+						line-height: 23px;
+					}
+				}
 				p {
 					font-family: "Roboto", Helvetica, Arial;
 					font-size: 14px;
+					font-weight: 300;
 					color: #808080;
 					line-height: 23px;
 				}
@@ -214,6 +229,56 @@ $border : #E1E8ED;
 							}
 						}
 					}
+					.port {
+						text-align: center;
+							.porto {
+								padding: 6px 64px;
+								color: #fff;
+								background-color: #95a5a6;
+								border-radius: 3px;
+								text-decoration: none;
+								text-align: center;
+								font-family: $font-stack;
+								font-weight: bold;
+						}
+					}
+				}
+			}
+			.sum-sales {
+				@extend .left-uy;
+				.sales {
+					@extend .btn-border;
+					@extend .dodo2;
+				}
+				.com-ent {
+					@extend .dodo2;
+					@extend .btn-border;
+				}
+				.rate-s {
+					@extend .dodo2;
+				}
+			}
+			.info-product {
+				@extend .left-uy;
+				.pro-duct {
+					@extend .dodo2;
+					.crt {
+						color: $greys;
+						margin: 0px;
+						font-size: 13px;
+						font-family: $font-stack;
+						font-weight: 400;
+						span {
+							font-weight: 300 !important;
+							a {
+								font-family: $font-stack;
+								color: $greys;
+							}
+						}
+					}
+				}
+				.created,.updated,.browser,.include,.column,.layout,.resolution,.widget,.compatible,.software{
+					@extend .btn-border;
 				}
 			}
 		}
@@ -253,4 +318,33 @@ $border : #E1E8ED;
 	content: "\f022";
 	margin-right: 5px;
 	font-size: 1em;
+}
+
+.sum-sa:before {
+	content: "\f290";
+	margin-right: 10px;
+	@extend .icon-s;
+	font-size: 1em !important;
+}
+.com-ent-t:before {
+	content: "\f086";
+	margin-right: 10px;
+	@extend .icon-s;
+	font-size: 1em !important;
+}
+.boo {
+	color: $greys;
+	margin: 0px;
+	font-size: 13px;
+	font-family: $font-stack;
+	font-weight: 400;
+	span {
+		font-weight: 700 !important;
+	}
+}
+.rate-f:before {
+	content: "\f005";
+	margin-right: 10px;
+	@extend .icon-s;
+	font-size: 1em !important;
 }

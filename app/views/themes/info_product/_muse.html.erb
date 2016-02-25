@@ -1,0 +1,32 @@
+<div class="created pro-duct">
+	<p class="crt">Created : <span><%= @theme.created_at.strftime("%d %B %Y") %></span></p>
+</div>
+<div class="updated pro-duct">
+	<p class="crt">Last Update	: <span><%= @theme.updated_at.strftime("%d %B %Y") %></span></p>
+</div>
+<div class="browser pro-duct">
+	<p class="crt">Resolution :
+		<% @theme.devices.each do |device| %>
+		<span><%= device.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="software pro-duct">
+	<p class="crt">Software Version :
+		<% @theme.softwares.each do |software| %>
+		<span><%= software.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="include pro-duct">
+	<p class="crt">ThemeForest Files Included :
+		<% @theme.fileincludes.each do |include| %>
+		<span><%= include.name %></span>
+		<% end %>
+	</p>
+</div>
+<div class="tag pro-duct">
+	<p class="crt">Tags : 
+		<span><%= raw @theme.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></span>
+	</p>
+</div>

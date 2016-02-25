@@ -3,7 +3,11 @@ class ThemesController < ApplicationController
 	before_action :find_themes, only: [:show, :edit, :update, :delete]
 
 	def index
-		
+		if params[:tag]
+			@themes = Theme.tagged_with(params[:tag])
+		else
+			@themes = Theme.all
+		end
 	end
 
 	def show
