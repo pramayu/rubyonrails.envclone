@@ -1,1 +1,81 @@
-<h1>ShowPage</h1>
+<div class="head xcsd">
+	<div class="container con-custom-detail">
+		<h2 class="tis"><%= @theme.name %></h2>
+		<p class="vbdgfd">by <span>Nicky Laatz</span></p>
+		<div class="tab-panel">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#item-detail" aria-controls="item-detail" role="tab" data-toggle="tab">Item Details</a></li>
+				<li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container con-custom-detail">
+	<div class="tab-content dhf">
+		<div role="tabpanel" class="tab-pane active" id="item-detail">
+			<div class="col-md-6 show-left">
+				<div id="carousel" class="carousel" data-ride="carousel">
+					<div class="slide-left">
+						<div class="carousel-inner" role="listbox">
+							<% @theme.assets.each_with_index  do |asset, index| %>
+							<div class="item <%= 'active' if index == 0  %>">
+								<%= image_tag asset.preview.url(:large) %>
+							</div>
+							<% end %>
+						</div>
+					</div>
+					<div class="slide-right">
+						<div class="frw" id="frw">
+							<ul class="indicator-car">
+								<% @theme.assets.each_with_index do |tmb, index| %>
+									<li data-target="#carousel" data-slide-to="<%= index %>">
+										<%= image_tag tmb.preview.url(:medium) %>
+									</li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="description">
+					<p><%= simple_format(@theme.description) %></p>
+				</div>
+			</div>
+			<div class="col-md-6 show-right">
+				<div class="price">
+					<div class="pri">
+						<%= link_to "Buy Now $#{@theme.price}", themes_path, class: "btn-price" %>
+					</div>
+					<ul class="check">
+						<li class="sora">Included: Quality checked by Envato</li>
+						<li class="sora">Future updates</li>
+						<li class="sora">Included: 6 months support from pimmey </li>
+					</ul>
+				</div>
+				<div class="seller">
+					<div class="img-pro">
+						<%= image_tag "profile_user/avatar.jpg", class: "pro-pic" %>
+						<p class="name-user">Nicky Laatz</p>
+						<%= link_to "Follow", themes_path, class: "foll" %>
+					</div>
+					<div class="clear"></div>
+					<div class="overall">
+						<p class="ov-al">99% Overall Recommended</p>
+					</div>
+					<div class="other-product">
+						<span class="tut">More from Nicky Laatz:</span>
+						<ul class="list-inline ouyt">
+							<li>
+								<% @theme.assets.limit(2).each do |other| %>
+									<%= link_to image_tag(other.preview.url(:medium), class: "img-other"), themes_path %>
+								<% end %>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	    <div role="tabpanel" class="tab-pane" id="comments">df</div>
+	</div>
+</div>

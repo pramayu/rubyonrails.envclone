@@ -8,7 +8,12 @@
 
 $(function(){
 	jQuery("html").niceScroll({cursorcolor:"#BDC3C7"});
+	jQuery("#frw").niceScroll({cursorcolor:"#BDC3C7"});
+	$("#carousel").carousel({
+		interval: 10000000
+	})
 });
+
 
 // $(function(){
 // 	$('#myForm').ajaxForm({
