@@ -4,9 +4,17 @@ class ThemesController < ApplicationController
 
 	def index
 		if params[:tag]
-			@themes = Theme.tagged_with(params[:tag])
+			@themes = Theme.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 30)
+		elsif params[:browser]
+			@themes = Theme.browser_with(params[:browser]).paginate(:page => params[:page], :per_page => 30)
+		elsif params[:compatible]
+			@themes = Theme.compatible_with(params[:compatible]).paginate(:page => params[:page], :per_page => 30)
+		elsif params[:fileinclude]
+			@themes = Theme.fileinclude_with(params[:fileinclude]).paginate(:page => params[:page], :per_page => 30)
+		elsif params[:device]
+			@themes = Theme.device_with(params[:device]).paginate(:page => params[:page], :per_page => 30)
 		else
-			@themes = Theme.all
+			@themes = Theme.all.paginate(:page => params[:page], :per_page => 30)
 		end
 	end
 

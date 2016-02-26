@@ -6,9 +6,8 @@
 </div>
 <div class="browser pro-duct">
 	<p class="crt">Resolution :
-		<% @theme.devices.each do |device| %>
-		<span><%= device.name %></span>
-		<% end %>
+		<span><%= raw @theme.devices.map(&:name).map { |f| link_to f, device_path(f) }.join(', ') %></span>
+	</p>
 	</p>
 </div>
 <div class="software pro-duct">
@@ -20,9 +19,7 @@
 </div>
 <div class="include pro-duct">
 	<p class="crt">ThemeForest Files Included :
-		<% @theme.fileincludes.each do |include| %>
-		<span><%= include.name %></span>
-		<% end %>
+		<span><%= raw @theme.fileincludes.map(&:name).map { |c| link_to c, fileinclude_path(c) }.join(', ') %></span>
 	</p>
 </div>
 <div class="tag pro-duct">

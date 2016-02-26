@@ -150,7 +150,7 @@ a {
 		padding-left: 11px;
 	}
 	.main-detail .header {
-		background: image_url( "welcome/detail-bg.png" );
+		background: image_url( "detail-bg.png" );
 		width: 100%;
 		height: 345px;
 		background-size: cover;
@@ -182,7 +182,7 @@ a {
 		position: absolute;
 		width: 100%;
 		height: 345px;
-		background: image_url( "welcome/pattern.png" );
+		background: image_url( "pattern.png" );
 		background-repeat: repeat;
 		left: 0px;
 		/* opacity: .3; */
@@ -222,6 +222,12 @@ a {
 		background-color: #95a5a6;
 		border-radius: 3px;
 		border-bottom: 2px solid #808D8E;
+		/*&:hover {
+			bacground-color: #e74c3c;
+			-webkit-transition: all .3s ease-in;
+			-moz-transition: all .3s ease-in;
+			transition: all .3s ease-in;
+		}*/
 	}
 	.main-detail .header .hov1 .capt .btn-grp ul li.btn2 {
 		margin-left: 25px;
@@ -239,4 +245,6 @@ a {
 @import "footer";
 @import "new";
 @import "edit";
+@import "category";
 @import "show";
+@import "index";

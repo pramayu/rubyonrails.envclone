@@ -31,6 +31,26 @@ $border : #E1E8ED;
 
 .xcsd {
 	padding-bottom: 0px;
+	padding-top: 20px;
+	.uclok {
+		padding-bottom: 10px;
+		h4 {
+			span {
+				a {
+					color: #323232;
+					font-family: $font-stack;
+					font-size: 14px;
+					font-weight: 400;
+					text-decoration: none;
+				}
+			}
+			.fa {
+				font-size: 14px;
+				padding: 0 10px;
+				color: #323232;
+			}
+		}
+	}
 }
 .tis {
 	margin-bottom: 5px;
@@ -62,6 +82,7 @@ $border : #E1E8ED;
 
 .dhf{
 	padding-top: 30px;
+	padding-bottom: 180px;
 	.tab-pane {
 		.show-left {
 			width: 72%;

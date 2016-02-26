@@ -1,5 +1,14 @@
 <div class="head xcsd">
 	<div class="container con-custom-detail">
+		<div class="uclok">
+			<h4>
+				<span><%= link_to "Home", themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+				<span><%= link_to @theme.category.name, themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+				<span><%= link_to @theme.subcategory.name, themes_path %></span>
+			</h4>
+		</div>
 		<h2 class="tis"><%= @theme.name %></h2>
 		<p class="vbdgfd">by <span>Nicky Laatz</span></p>
 		<div class="tab-panel">

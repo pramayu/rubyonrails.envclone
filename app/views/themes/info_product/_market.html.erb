@@ -9,9 +9,7 @@
 </div>
 <div class="browser pro-duct">
 	<p class="crt">Compatible Browsers :
-		<% @theme.browsers.each do |browser| %>
-		<span><%= browser.name %></span>
-		<% end %>
+		<span><%= raw @theme.browsers.map(&:name).map { |b| link_to b, browser_path(b) }.join(', ') %></span>
 	</p>
 </div>
 <div class="browser pro-duct">
@@ -23,16 +21,12 @@
 </div>
 <div class="compatible pro-duct">
 	<p class="crt">Compatible With :
-		<% @theme.compatibles.each do |compatible| %>
-		<span><%= compatible.name %></span>
-		<% end %>
+		<span><%= raw @theme.compatibles.map(&:name).map { |c| link_to c, compatible_path(c) }.join(', ') %></span>
 	</p>
 </div>
 <div class="include pro-duct">
 	<p class="crt">ThemeForest Files Included :
-		<% @theme.fileincludes.each do |include| %>
-		<span><%= include.name %></span>
-		<% end %>
+		<span><%= raw @theme.fileincludes.map(&:name).map { |c| link_to c, fileinclude_path(c) }.join(', ') %></span>
 	</p>
 </div>
 <div class="column pro-duct">

@@ -1,2 +1,81 @@
-<h1>IndexPage</h1>
-<h1><%= link_to "new", new_theme_path %></h1>
+<div class="main-detail xoxoi">
+	<div class="header">
+		<div class="hov1">
+			<div class="capt">
+			<h2><span><%= @themes.count %></span> Website Templates and Themes From $6</h2>
+				<p>for 
+					<span class="_f"><a href="#">HTML</a></span>
+					<span class="_f"><a href="#">Email</a></span>
+					<span class="_f"><a href="#">WordPress</a></span>	
+					<span class="_f"><a href="#">PSD</a></span>
+					<span class="_f"><a href="#">Joomla</a></span>
+					<span class="_f"><a href="#">Magento</a></span>
+					and more
+				</p>
+				<div class="form-group inpt">
+					<div class="container con-custom-detail">
+						<span><input type="text" class="form-control ids" placeholder="e.g. responsive wordpress"></span>
+					</div>
+					<span><a href="" class="btn btn-default bts"><i class="fa fa-search"></i></a></span>
+				</div>
+				<div class="btn-grp">
+					<ul>
+						<li>
+							<a href="#" class="bta btn1">Browse Popular Items</a>
+						</li>
+						<li class="btn2">
+							<a href="#" class="bta btn2">Browse Top News Items</a>
+						</li>
+						<li>
+							<a href="#" class="bta btn1">Browse Latest Items</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="filter"></div>
+	<div class="fret">
+		<div class="container con-custom-detail">
+			<div class="row">
+				<% @themes.each do |theme| %>
+					<div class="col-xs-6 col-md-3 boop">
+						<div class="thumbnail thumb-fret">
+							<a href="#">
+								<%= image_tag theme.thumb.url(:large) %>
+							</a>
+							<%= link_to theme_path(theme), class: "name-pla" do %>
+								<p class="iu"><%= theme.name %></p>
+								<em class="coit"><span class="joi"><%= theme.category.name %></span><i class="fa fa-angle-right"></i><span class="joi"><%= theme.subcategory.name %></span></em>
+							<% end %>
+							<div class="propo">
+								<div class="pull-left">
+									<div class="money">
+										<span class="uang">$<%= theme.price %></span>
+									</div>
+								</div>
+								<div class="pull-right">
+									<ul class="list-inline">
+										<li class="like-bro okok">
+											<%= link_to "", themes_path, class: "like-btn" %>
+										</li>
+										<li class="coll-bro okok">
+											<%= link_to "", themes_path, class: "collect-btn" %>
+										</li>
+										<li class="buy-bro okok">
+											<%= link_to "", themes_path, class: "buy-btn" %>
+										</li>
+									</ul>
+								</div>
+								<div class="clear">	</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="cf">
+		<%= will_paginate @themes %>
+	</div>
+</div>

@@ -46,6 +46,83 @@ class Theme < ActiveRecord::Base
 	has_attached_file :clip
   	validates_attachment_content_type :clip, content_type: ["application/zip", "application/rar"]
 
-  	# tags all
+	# sort browser
+  	def self.browser_with(name)
+  		Browser.find_by_name!(name).themes  		
+  	end
 
+  	def self.browser_counts
+  		Browser.select("browsers.*, count(browserthemes.browser_id) as count").
+  		joins(:browserthemes).group(browserthemes.browser_id)
+  	end
+
+  	def browser_list
+  		browsers.map(&:name).join(", ")
+  	end
+
+  	def browser_list=(names)
+  		self.browsers = names.split(",").map do |n|
+  			Browser.where(name: n.strip).first_or_create!
+  		end
+  	end
+
+  	# sort compatible
+  	def self.compatible_with(name)
+  		Compatible.find_by_name!(name).themes  		
+  	end
+
+  	def self.compatible_counts
+  		Compatible.select("compatibles.*, count(compatiblethemes.compatible_id) as count").
+  		joins(:compatiblethemes).group(compatiblethemes.compatible_id)
+  	end
+
+  	def compatible_list
+  		compatibles.map(&:name).join(", ")
+  	end
+
+  	def compatible_list=(names)
+  		self.compatibles = names.split(",").map do |n|
+  			Compatible.where(name: n.strip).first_or_create!
+  		end
+  	end
+
+  	# sort fileinclude
+    def self.fileinclude_with(name)
+      Fileinclude.find_by_name!(name).themes     
+    end
+
+    def self.fileinclude_counts
+      Fileinclude.select("fileincludes.*, count(fileincludethemes.fileinclude_id) as count").
+      joins(:fileincludethemes).group(fileincludethemes.fileinclude_id)
+    end
+
+    def fileinclude_list
+      fileincludes.map(&:name).join(", ")
+    end
+
+    def fileinclude_list=(names)
+      self.fileincludes = names.split(",").map do |n|
+        Fileinclude.where(name: n.strip).first_or_create!
+      end
+    end
+
+    # sort device
+    def self.device_with(name)
+      Device.find_by_name!(name).themes     
+    end
+
+    def self.device_counts
+      Device.select("devices.*, count(devicethemes.device_id) as count").
+      joins(:devicethemes).group(devicethemes.device_id)
+    end
+
+    def device_list
+      devices.map(&:name).join(", ")
+    end
+
+    def device_list=(names)
+      self.devices = names.split(",").map do |n|
+        Device.where(name: n.strip).first_or_create!
+      end
+    end
 end

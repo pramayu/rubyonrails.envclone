@@ -6,9 +6,7 @@
 </div>
 <div class="include pro-duct">
 	<p class="crt">ThemeForest Files Included :
-		<% @theme.fileincludes.each do |include| %>
-		<span><%= include.name %></span>
-		<% end %>
+		<span><%= raw @theme.fileincludes.map(&:name).map { |c| link_to c, fileinclude_path(c) }.join(', ') %></span>
 	</p>
 </div>
 <div class="tag pro-duct">
