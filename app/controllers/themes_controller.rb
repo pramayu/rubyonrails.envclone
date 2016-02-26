@@ -1,6 +1,7 @@
 class ThemesController < ApplicationController
 
 	before_action :find_themes, only: [:show, :edit, :update, :delete]
+	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
 		if params[:tag]
@@ -14,16 +15,16 @@ class ThemesController < ApplicationController
 		elsif params[:device]
 			@themes = Theme.device_with(params[:device]).paginate(:page => params[:page], :per_page => 30)
 		else
-			@themes = Theme.all.paginate(:page => params[:page], :per_page => 30)
+			@themes = Theme.all.order("created_at desc").paginate(:page => params[:page], :per_page => 30)
 		end
 	end
 
 	def show
-		
+		@comments = Comment.where(theme_id: @theme)
 	end
 
 	def new
-		@theme = Theme.new
+		@theme = current_user.themes.build
 		@theme.assets.build
 		# @themeview = @theme.themeviews.build
 		# respond_to do |format|
@@ -33,7 +34,7 @@ class ThemesController < ApplicationController
 	end
 
 	def create
-		@theme = Theme.new(theme_params)
+		@theme = current_user.themes.build(theme_params)
 		if @theme.save
 			# params[:themeviews]['previewer'].each do |a|
 			# 	@themeview = @theme.themeviews.create!(:previewer => a)

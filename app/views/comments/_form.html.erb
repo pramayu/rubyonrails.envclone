@@ -1,0 +1,6 @@
+<%= simple_form_for([@theme, @theme.comments.build]) do |f| %>
+	<div class="form-group txt-ttt">
+		<%= f.input :content, class: "form-control comment-frm", label: false, placeholder: "Add Comment" %>
+	</div>
+	<%= f.submit "Comment", class: "btn btn-default btn-oi" %>
+<% end %>

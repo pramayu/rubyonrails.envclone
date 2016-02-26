@@ -72,17 +72,38 @@ $light:#edeff5;
 								text-decoration: none;
 							}
 						}
+						.like-btn {
+							span {
+								font-size: 12px;
+								color: #D4D4D4;
+
+							}
+						}
 					}
 					.pull-left {
 						.money {
 							margin-top: 8px;
 							.uang {
 								font-size: 13px;
-								color: #D4D4D4;
+								color: #555;
 								font-family: $font-stack;
 							}
 						}
 					}
+				}
+			}
+			.the-seller {
+				.img-pi {
+					width: 16px;
+					float: left;
+					border-radius: 100%;
+					margin-right: 5px;
+				}
+				.nam {
+					font-size: 12px;
+					font-family: $font-stack;
+					font-weight: 300;
+					color: #555;
 				}
 			}
 		}

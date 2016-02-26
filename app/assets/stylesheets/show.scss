@@ -369,3 +369,69 @@ $border : #E1E8ED;
 	@extend .icon-s;
 	font-size: 1em !important;
 }
+
+.cmks {
+/*	padding-top: 30px;
+	margin-top: 10px;
+	border-top: 2px solid #F4F4F4;*/
+	.com-count {
+		font-weight: 400;
+		font-family: $font-stack;
+	}
+	.popod {
+		padding: 0;
+		margin: 20px 0px;
+		list-style: none;
+		li {
+			padding: 10px 0px;
+			.img-coms {
+				float: left;
+				margin-left: 10px;
+				border-radius: 3px;
+			}
+			.nouy {
+				margin-left: 19px;
+				font-weight: bold;
+				color: #555;
+				text-transform: capitalize;
+			}
+			.time {
+				color: #777;
+				font-weight: 300;
+				font-family: $font-stack;
+				margin-left: 60px;
+				margin-top: 10px;
+				font-size: 12px;
+			}
+			p {
+				margin: 0px;
+				margin-left: 60px;
+				line-height: 22px;
+				font-family: $font-stack;
+				color: #999;
+				font-weight: 300;
+			}
+		}
+	}
+	.fgh {
+		padding-bottom: 180px;
+		.txt-ttt {
+			textarea {
+				height: 120px;
+				border-radius: 0px;
+				outline: none;
+				box-shadow: none;
+				border: #dedede 1px solid;
+				color: #ABABAB;
+			}
+		}
+
+		.btn-oi {
+			background-color: #34495e;
+			border-radius: 2px;
+			color: #fff;
+			font-weight: bold;
+			border: none;
+		}
+	}
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224124454) do
+ActiveRecord::Schema.define(version: 20160226154948) do
 
   create_table "assets", force: :cascade do |t|
     t.integer  "theme_id",             limit: 4
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20160224124454) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content",    limit: 65535
+    t.integer  "theme_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["theme_id"], name: "index_comments_on_theme_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "compatibles", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -198,14 +209,39 @@ ActiveRecord::Schema.define(version: 20160224124454) do
     t.integer  "clip_file_size",     limit: 4
     t.datetime "clip_updated_at"
     t.text     "message",            limit: 65535
+    t.integer  "user_id",            limit: 4
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree
   add_index "themes", ["subcategory_id"], name: "index_themes_on_subcategory_id", using: :btree
+  add_index "themes", ["user_id"], name: "index_themes_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "firstname",              limit: 255
+    t.string   "lastname",               limit: 255
+    t.string   "username",               limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "assets", "themes"
   add_foreign_key "browserthemes", "browsers"
   add_foreign_key "browserthemes", "themes"
+  add_foreign_key "comments", "themes"
+  add_foreign_key "comments", "users"
   add_foreign_key "compatiblethemes", "compatibles"
   add_foreign_key "compatiblethemes", "themes"
   add_foreign_key "devicethemes", "devices"
@@ -221,4 +257,5 @@ ActiveRecord::Schema.define(version: 20160224124454) do
   add_foreign_key "subcategories", "categories"
   add_foreign_key "themes", "categories"
   add_foreign_key "themes", "subcategories"
+  add_foreign_key "themes", "users"
 end

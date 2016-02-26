@@ -15,9 +15,21 @@
 				<%= link_to (image_tag "logo.png", width: "20"), themes_path, class: "navbar-brand" %>
 			</div>
 			<ul class="menu2 nav navbar-nav navbar-right">
-				<li><a href="#" class="signup">Create an OurMarket Account</a></li>
+				<li>
+					<% if user_signed_in? %>
+						<%= link_to current_user.firstname+' '+current_user.lastname, new_theme_path, class: "signup" %>
+					<% else %>
+						<%= link_to "Create an OurMarket Account", new_user_registration_path %>
+					<% end %>
+				</li>
 				<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
-				<li><a href="#" class="signin">Sign In</a></li>
+				<li>
+					<% if user_signed_in? %>
+						<%= link_to "Sign Out", destroy_user_session_path, method: :delete , class: "signin" %>
+					<% else %>
+						<%= link_to "Sign In", new_user_session_path, class: "signin" %>
+					<% end %>
+				</li>
 			</ul>
 			<ul class="menu1 nav navbar-nav navbar-right">
 				<li><a href="#">Home</a></li>

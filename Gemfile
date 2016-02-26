@@ -26,3 +26,4 @@ gem 'simple_form'
 gem "paperclip", "~> 4.3"
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'will_paginate', '~> 3.0.6'
+gem 'devise'

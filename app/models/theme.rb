@@ -2,6 +2,9 @@ class Theme < ActiveRecord::Base
 
 	acts_as_taggable
 
+  belongs_to :user
+  has_many :comments
+
 	# category and subcategory to themes
 	belongs_to :category
 	belongs_to :subcategory
