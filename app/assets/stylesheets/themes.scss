@@ -55,15 +55,49 @@ a {
 		&:hover {
 			color:#fff;
 		}
+		&:focus {
+			border: none;
+			-webkit-appearance:none;
+			outline: none;
+			background-color: #333333;
+			color: #999;
+		}
 	}
 	.nav1 .menu2 li  a.signup {
 		color: #fff;
 		font-weight: 500;
 		text-transform: capitalize;
+		outline: none;
 		color: #999999;
+		&:active {
+			border: none;
+			-webkit-appearance:none;
+			outline: none;
+		}
+		&:visited {
+			border: none;
+			-webkit-appearance:none;
+			outline: none;
+		}
+		&:focus {
+			border: none;
+			-webkit-appearance:none;
+			outline: none;
+		}
 	}
 	.nav1 .menu2 li  a.sigin {
 		color: #999999;
+		outline: none;
+		&:active {
+			border: none;
+			-webkit-appearance:none;
+			outline: none;
+		}
+		&:visited {
+			border: none;
+			-webkit-appearance:none;
+			outline: none;
+		}
 	}
 	.nav2 {
 		min-height: 47px;
@@ -250,3 +284,4 @@ a {
 @import "category";
 @import "show";
 @import "index";
+@import "modal";

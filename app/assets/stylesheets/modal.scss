@@ -1,0 +1,227 @@
+$font-stack: "Roboto", Helvetica, Arial;
+#myModal {
+	.modal-dialog {
+		width: 750px;
+		padding: 40px;
+		.modal-content {
+			border-radius: 3px;
+			background-color: #FAFAF8;
+			.col-md-6 {
+				padding: 0px;
+				border-radius: 3px;
+				.modal-header {
+					text-align: center;
+					h4 {
+						font-size: 16px;
+						font-weight: 300;
+						color: #999;
+						font-family: $font-stack;
+					}
+				}
+				.modal-body {
+					.facebook-auth {
+						padding-top: 60px;
+						padding-bottom: 30px;
+						border-bottom: 1px solid #e5e5e5;
+						text-align: center;
+						.fb-auth {
+							padding: 8px 78px;
+							background-color: #3b5998;
+							border: 1px solid #3b5998;
+							color: #fff;
+							border-radius: 2px;
+							font-weight: 200;
+							font-family: $font-stack;
+							text-decoration: none;
+							font-size: 12px;
+							span {
+								font-weight: bold;
+							}
+						}
+						.or {
+							position: absolute;
+							margin-top: 17px;
+							left: 45%;
+							padding: 5px;
+							background-color: #FAFAF8;
+							font-size: 13px;
+							font-weight: 300;
+							color: #9A9A9A;
+						}
+					}
+					.log-form {
+						padding: 25px 0px;
+						padding-bottom: 60px;
+						.ljds {
+							margin: 0px;
+							input {
+								width: 100%;
+								min-height: 34px;
+								padding: 5px 10px;
+								margin-bottom: 20px;
+								color: #5c554b;
+								background: #fcfcf9;
+								font-size: 12px;
+								font-weight: 300;
+								line-height: 20px;
+								border: 1px solid #DADADA;
+								outline: none;
+								-webkit-appearance: none;
+								-webkit-border-radius: 2px;
+								-moz-border-radius: 2px;
+								border-radius: 2px;
+							}
+						}
+						.form-act {
+							.btn-act {
+								width: 100%;
+								min-height: 34px;
+								padding: 5px 10px;
+								margin-bottom: 20px;
+								color: #fff;
+								background: #8ba753;
+								font-size: 12px;
+								font-weight: 400;
+								line-height: 20px;
+								border: 1px solid #8ba753;
+								outline: none;
+								-webkit-appearance: none;
+								-webkit-border-radius: 2px;
+								-moz-border-radius: 2px;
+								border-radius: 2px;
+							}
+						}
+					}
+				}
+				.modal-footer {
+					width: 100%;
+					height: 54px;
+					background: #eeede9;
+					border-top: 1px solid #dbd9d6;
+					text-align: center;
+					-webkit-border-radius: 0 0 3px 3px;
+					-moz-border-radius: 0 0 3px 3px;
+					border-radius: 0 0 3px 3px;
+					h5 {
+						font-family: $font-stack;
+						color: #777;
+						font-size: 12px;
+						font-weight: 300;
+						span {
+							a {
+								font-weight: bold;
+								color: #8ba753;font-family: $font-stack;
+								font-size: 12px;
+								text-decoration: none;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.fb-auth:before {
+	content: "\f09a";
+	font-family: FontAwesome;
+	margin-right: 10px;
+	font-size: 14px !important;
+	color: #fff;
+	font-weight: normal !important;
+}
+
+.fname, .lname {
+	float: left;
+	width: 140px;
+}
+.lname .fkjs {
+	margin-left: 20px;
+}
+
+.reg-fb {
+	padding-top: 15px !important;
+}
+
+.reg-input input{
+	margin-bottom: 15px !important;
+}
+
+.reg-form {
+	padding-bottom: 10px !important
+}
+
+.dojas {
+	text-align: center;
+	.agree {
+		font-size: 10px;
+		font-family: $font-stack;
+		font-weight: 300;
+		color: #999;
+	}
+}
+.btn-act-reg {
+	margin-bottom: 5px !important;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+	   -moz-animation-duration: 1s;
+	     -o-animation-duration: 1s;
+	        animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	   -moz-animation-fill-mode: both;
+	     -o-animation-fill-mode: both;
+	        animation-fill-mode: both;
+}
+
+.animated.hinges {
+	-webkit-animation-duration: 2s;
+	   -moz-animation-duration: 2s;
+	     -o-animation-duration: 2s;
+	        animation-duration: 2s;
+}
+
+.animated.slow {
+	-webkit-animation-duration: 3s;
+	   -moz-animation-duration: 3s;
+	     -o-animation-duration: 3s;
+	        animation-duration: 3s;
+}
+
+.animated.snail {
+	-webkit-animation-duration: 4s;
+	   -moz-animation-duration: 4s;
+	     -o-animation-duration: 4s;
+	        animation-duration: 4s;
+}
+
+@-webkit-keyframes shake {
+	0%, 100% {-webkit-transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+
+@-moz-keyframes shake {
+	0%, 100% {-moz-transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {-moz-transform: translateX(10px);}
+}
+
+@-o-keyframes shake {
+	0%, 100% {-o-transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {-o-transform: translateX(10px);}
+}
+
+@keyframes shake {
+	0%, 100% {transform: translateX(0);}
+	10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+	20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.shake {
+	-webkit-animation-name: shake;
+	-moz-animation-name: shake;
+	-o-animation-name: shake;
+	animation-name: shake;
+}

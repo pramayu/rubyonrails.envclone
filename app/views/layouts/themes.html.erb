@@ -19,7 +19,7 @@
 					<% if user_signed_in? %>
 						<%= link_to current_user.firstname+' '+current_user.lastname, new_theme_path, class: "signup" %>
 					<% else %>
-						<%= link_to "Create an OurMarket Account", new_user_registration_path %>
+						<a href="javascript:void(0)" onclick="openRegisterModal();" data-toggle="modal" class="singup" >Create an OurMarket Account</a>
 					<% end %>
 				</li>
 				<li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
@@ -27,7 +27,7 @@
 					<% if user_signed_in? %>
 						<%= link_to "Sign Out", destroy_user_session_path, method: :delete , class: "signin" %>
 					<% else %>
-						<%= link_to "Sign In", new_user_session_path, class: "signin" %>
+						<a href="javascript:void(0)" onclick="openLoginModal();" data-toggle="modal" class="singin" >Sign In</a>
 					<% end %>
 				</li>
 			</ul>

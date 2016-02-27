@@ -1,0 +1,83 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog animated" role="document">
+		<div class="modal-content">
+			<div class="left-modal col-md-6">
+
+			</div>
+			<div class="right-modal col-md-6">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Sign Into Your Account</h4>
+				</div>
+				<div class="modal-body">
+					<div class="box-log">
+						<div class="loginBox">
+							<div class="facebook-auth">
+								<a href="#" class="fb-auth">Sign in using <span>Facebook</span></a>
+								<div class="or">OR</div>
+							</div>
+							<div class="log-form">
+								<%= simple_form_for(:user, :url => user_session_path) do |f| %>
+								<div class="form-group ljds">
+									<%= f.text_field :login, required: true, autofocus: true, label: false, placeholder: "Username or Email", class: "fkjs" %>
+								</div>
+								<div class="form-group ljds">
+									<%= f.password_field :password, required: true, label: false, placeholder: "Password", class: "fkjs"  %>
+								</div>
+								<div class="form-act">
+									<%= f.button :submit, "Login", class: "btn btn-act" %>
+								</div>
+								<% end %>
+							</div>
+						</div>
+					</div>
+					<div class="box-log">
+						<div class="registerBox" style="display: none;">
+							<div class="facebook-auth reg-fb">
+								<a href="#" class="fb-auth">Sign up using <span>Facebook</span></a>
+								<div class="or">OR</div>
+							</div>
+							<div class="log-form reg-form">
+								<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+									<div class="form-group ljds fname reg-input">
+										<%= f.text_field :firstname, required: true, autofocus: true, label: false, class: "fkjs", placeholder: "First name" %>
+									</div>
+									<div class="form-group ljds lname reg-input">
+										<%= f.text_field :lastname, required: true, label: false, class: "fkjs", placeholder: "Last name" %>
+									</div>
+									<div class="form-group ljds reg-input">
+										<%= f.email_field :email, required: true, label: false, class: "fkjs", placeholder: "Email " %>
+									</div>
+									<div class="form-group ljds reg-input">
+										<%= f.text_field :username, required: true, label: false, class: "fkjs", placeholder: "Username" %>
+									</div>
+									<div class="form-group ljds reg-input">
+										<%= f.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: false, class: "fkjs", placeholder: "Password" %>
+									</div>
+									<div class="form-group ljds reg-input">
+										<%= f.password_field :password_confirmation, required: true, label: false, class: "fkjs", placeholder: "Re-type password" %>
+									</div>
+									<div class="form-act">
+										<%= f.button :submit, "Sign Up", class: "btn btn-act btn-act-reg" %>
+									</div>
+								<% end %>
+								<div class="dojas">
+									<span class="agree">By creating an account, you agree to our terms and privacy policy.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="login-footer">
+						<h5>New to Creative Market? <span><a href="javascript: showRegisterForm();">Sign up!</a></span></h5>
+					</div>
+					<div class="register-footer" style="display: none">
+						<h5>Already have an account? <span><a href="javascript: showLoginForm();">Sign in!</a></span></h5>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>

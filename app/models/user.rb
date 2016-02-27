@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
 	has_many :comments
 
 	def login=(login)
-    @login = login
-  end
+		@login = login
+	end
 
   def login
     @login || self.username || self.email
