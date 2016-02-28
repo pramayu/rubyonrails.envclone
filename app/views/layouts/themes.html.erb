@@ -15,9 +15,24 @@
 				<%= link_to (image_tag "logo.png", width: "20"), themes_path, class: "navbar-brand" %>
 			</div>
 			<ul class="menu2 nav navbar-nav navbar-right">
-				<li>
+				<li class="bout">
 					<% if user_signed_in? %>
 						<%= link_to current_user.firstname+' '+current_user.lastname, new_theme_path, class: "signup" %>
+						<ul class="koukou">
+							<li class="prof"><a href="#">Profile</a></li>
+							<li class="actn"><a href="#">Envclone Account</a></li>
+							<li class="set"><a href="#">Settings</a></li>
+							<li class="down"><a href="#">Downloads</a></li>
+							<li class="fav"><a href="#">Favorite</a></li>
+							<li class="collect"><a href="#">Collection</a></li>
+							<li class="folw"><a href="#">Follow Feed</a></li>
+							<li class="stat"><a href="#">Statement</a></li>
+							<li class="lig sf"><a href="#">Make Deposit</a></li>
+							<li class="dsh"><a href="#">Author Dashboard</a></li>
+							<li class="upld"><a href="#">Upload</a></li>
+							<li class="earn"><a href="#">Earnings</a></li>
+							<li class="trk"><a href="#">Withdrawals</a></li>
+						</ul>
 					<% else %>
 						<a href="javascript:void(0)" onclick="openRegisterModal();" data-toggle="modal" class="singup" >Create an OurMarket Account</a>
 					<% end %>
@@ -59,7 +74,17 @@
 	<div class="nav3 navbar navbar-default">
 		<div class="container con-custom-detail">
 			<ul class="menu4 nav navbar-nav" id="mkhd">
-				<li><a href="#">All Items</a></li>
+				<li class="nounou zero">
+					<a href="#">All Items</a>
+					<ul class="drp-down all_drp">
+						<li><a href="#">Pupular Files</a></li>
+						<li><a href="#">Featured Files</a></li>
+						<li><a href="#">Top New Files</a></li>
+						<li><a href="#">Follow Feed</a></li>
+						<li><a href="#">Top Authors</a></li>
+						<li><a href="#">Top New Authors</a></li>
+					</ul>
+				</li>
 				<li class="nounou one">
 					<%= link_to "Wordpress", categories_path(@category_id = "1001")	 %>
 						<ul class="drp-down wp_drp">

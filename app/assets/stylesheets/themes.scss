@@ -322,9 +322,104 @@ a {
 	border-bottom: 10px solid #fff;
 	position: absolute;
 	z-index: 999;
+
 }
 
+.koukou {
+	display: none;
+	position: absolute;
+	z-index: 9999999;
+	background-color: #fff;
+	margin-top: -2px;
+	min-width: 172px;
+	border-radius: 0px;
+	list-style: none;
+	padding: 0px;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+	li {
+		padding: 6px 10px;
+		a {
+			text-decoration: none;
+			color: #888;
+			font-size: 12px !important;
+			font-weight: 100;
+			padding: 0px !important;
+			background-color: transparent !important;
+			font-family: "Helvetica Neue", Roboto, Helvetica, Arial !important;
+			&:hover{
+				color:#666 !important;
+			}
+		}
+		&:hover {
+			background-color: #F5F5F5;
+		}
+	}
+	.lig {
+		border-bottom: 1px solid #F1F1F1;
+	}
+}
 
+.icond {
+	font-family: FontAwesome;
+	color: #999;
+	font-size: 14px;
+	position: absolute;
+	right: 18px;
+	opacity: .65;
+}
+
+.prof:after {
+	@extend .icond;
+	content: "\f007";
+}
+.actn:after {
+	@extend .icond;
+	content: "\f1ca";
+}
+.set:after {
+	@extend .icond;
+	content: "\f013";
+}
+.down:after {
+	@extend .icond;
+	content: "\f019";
+}
+.fav:after {
+	@extend .icond;
+	content: "\f004";
+}
+.collect:after {
+	@extend .icond;
+	content: "\f07c";
+}
+.folw:after {
+	@extend .icond;
+	content: "\f0c0";
+}
+.stat:after {
+	@extend .icond;
+	content: "\f0f6";
+}
+.sf:after {
+	@extend .icond;
+	content: "\f155";
+}
+.dsh:after {
+	@extend .icond;
+	content: "\f0e4";
+}
+.upld:after {
+	@extend .icond;
+	content: "\f093";
+}
+.earn:after {
+	@extend .icond;
+	content: "\f0ee";
+}
+.trk:after {
+	@extend .icond;
+	content: "\f19c";
+}
 @import "footer";
 @import "new";
 @import "edit";

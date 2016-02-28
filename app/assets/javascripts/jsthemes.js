@@ -212,4 +212,23 @@ $(document).ready(function () {
 		}
 	);
 
+	$(".zero").hover(
+		function () {
+			$('ul.all_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.all_drp').slideUp('medium');
+		}
+	);
+
+	$(".bout").hover(
+		function () {
+			$('ul.koukou').slideDown('medium');
+		}, 
+		function () {
+			$('ul.koukou').slideUp('medium');
+		}
+	);
+
+
 });
