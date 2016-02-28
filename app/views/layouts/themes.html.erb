@@ -44,7 +44,7 @@
 	<div class="nav2 navbar navbar-default">
 		<div class="container con-custom-detail">
 			<ul class="menu3 nav navbar-nav">
-				<li><a href="#" class="th">themeforest</a></li>
+				<li><%= link_to "themeforest", themes_path, class: "th" %></li>
 				<li><a href="#" class="gr">graphicriver</a></li>
 				<li><a href="#" class="cc">codecanyon</a></li>
 				<li><a href="#" class="vh">videohive</a></li>
@@ -58,18 +58,126 @@
 	</div>
 	<div class="nav3 navbar navbar-default">
 		<div class="container con-custom-detail">
-			<ul class="menu4 nav navbar-nav">
+			<ul class="menu4 nav navbar-nav" id="mkhd">
 				<li><a href="#">All Items</a></li>
-				<li><a href="#">WordPress</a></li>
-				<li><a href="#">HTML</a></li>
-				<li><a href="#">Marketing</a></li>
-				<li><a href="#">CMS</a></li>
-				<li><a href="#">eCommerce</a></li>
-				<li><a href="#">LayerWP</a></li>
-				<li><a href="#">Muse</a></li>
-				<li><a href="#">UI Design</a></li>
+				<li class="nounou one">
+					<%= link_to "Wordpress", categories_path(@category_id = "1001")	 %>
+						<ul class="drp-down wp_drp">
+							<li class="lig"><a href="#">Popular Items</a></li>
+							<li><a href="#">Blog / Magazine</a></li>
+							<li><a href="#">BuddyPress</a></li>
+							<li><a href="#">Corporate</a></li>
+							<li><a href="#">Creative</a></li>
+							<li><a href="#">Directory &amp; Listings</a></li>
+							<li><a href="#">eCommerce</a></li>
+							<li><a href="#">Education</a></li>
+							<li><a href="#">Entertaiment</a></li>
+							<li><a href="#">Mobile</a></li>
+							<li><a href="#">Nonprofit</a></li>
+							<li><a href="#">Real Estate</a></li>
+							<li><a href="#">Retail</a></li>
+							<li><a href="#">Technology</a></li>
+							<li><a href="#">Wedding</a></li>
+							<li><a href="#">Miscellaneous</a></li>
+							<li><a href="#">WordPress Plugins</a></li>
+						</ul>
+				</li>
+				<li class="nounou two">
+					<%= link_to "HTML", categories_path(@category_id = "1007") %>
+					<ul class="drp-down ht_drp">
+						<li class="lig"><a href="#">Popular Items</a></li>
+						<li><a href="#">Creative</a></li>
+						<li><a href="#">Corporate</a></li>
+						<li><a href="#">Retail</a></li>
+						<li><a href="#">Technology</a></li>
+						<li><a href="#">Nonprofit</a></li>
+						<li><a href="#">Entertaiment</a></li>
+						<li><a href="#">Personal</a></li>
+						<li><a href="#">Miscellaneous</a></li>
+					</ul>
+				</li>
+				<li class="nounou three">
+					<%= link_to "Marketing", categories_path(@category_id = "1005") %>
+					<ul class="drp-down mark_drp">
+						<li class="lig"><a href="#">Popular Items</a></li>
+						<li><a href="#">Email Templates</a></li>
+						<li><a href="#">Instapage</a></li>
+						<li><a href="#">Landing Pages </a></li>
+						<li><a href="#">Pagewiz</a></li>
+						<li><a href="#">Unbounce Landing Pages</a></li>
+					</ul>
+				</li>
+				<li class="nounou four">
+					<%= link_to "CMS", categories_path(@category_id = "1002") %>
+					<ul class="drp-down cms_drp">
+						<li class="lig"><a href="#">Popular Items</a></li>
+						<li><a href="#">Concrete5</a></li>
+						<li><a href="#">Drupal</a></li>
+						<li><a href="#">Joomla</a></li>
+						<li><a href="#">MODX Themes</a></li>
+						<li><a href="#">Moodle</a></li>
+						<li><a href="#">Mura</a></li>
+						<li><a href="#">Miscellaneous</a></li>
+					</ul>
+				</li>
+				<li class="nounou five">
+					<%= link_to "eCommerce", categories_path(@category_id = "1003") %>
+					<ul class="drp-down com_drp">
+						<li class="lig"><a href="#">Popular Items</a></li>
+						<li><a href="#">Cart66</a></li>
+						<li><a href="#">CS-Cart</a></li>
+						<li><a href="#">Drupal Commerce</a></li>
+						<li><a href="#">Easy Digital Downloads</a></li>
+						<li><a href="#">Ecwid</a></li>
+						<li><a href="#">Jigoshop</a></li>
+						<li><a href="#">Magneto</a></li>
+						<li><a href="#">OpenCart</a></li>
+						<li><a href="#">osCommerce</a></li>
+						<li><a href="#">PrestaShop</a></li>
+						<li><a href="#">Shopify</a></li>
+						<li><a href="#">Ubercart</a></li>
+						<li><a href="#">VirtueMart</a></li>
+						<li><a href="#">WooCommerce</a></li>
+						<li><a href="#">WP e-Commerce</a></li>
+						<li><a href="#">Zen Cart</a></li>
+						<li><a href="#">Miscellaneous</a></li>
+					</ul>
+				</li>
+				<li class="nounou six">
+					<%= link_to "Layer Wp", categories_path(@category_id = "1011") %>
+					<ul class="drp-down layer_drp">
+						<li class="lig"><a href="#">Popular Items</a></li>
+						<li><a href="#">Jekyll</a></li>
+					</ul>
+				</li>
+				<li class="nounou seven">
+					<%= link_to "Muse", categories_path(@category_id = "1008") %>
+					<ul class="drp-down muse_drp">
+						<li class="lig"><a href="#">Popular Items</a></li>
+						<li><a href="#">Corporate</a></li>
+						<li><a href="#">Creative</a></li>
+						<li><a href="#">eCommerce</a></li>
+						<li><a href="#">Landing Page</a></li>
+						<li><a href="#">Personal</a></li>
+						<li><a href="#">Miscellaneous</a></li>
+					</ul>
+				</li>
+				<li class="nounou eight">
+					<a href="#">UI Design</a>
+					<ul class="drp-down design">
+						<li><%= link_to "PSD Templates", categories_path(@category_id = "1007") %></li>
+						<li><%= link_to "Sketch Templates", categories_path(@category_id = "1009") %></li>
+					</ul>
+				</li>
 				<li><a href="#">Plugins</a></li>
-				<li><a href="#">More</a></li>	
+				<li class="nounou nine">
+					<a href="#">More</a>
+					<ul class="drp-down more_drp">
+						<li><%= link_to "Blogging", categories_path(@category_id = "1004") %></li>
+						<li><%= link_to "Forums", categories_path(@category_id = "1006") %></li>
+						<li><%= link_to "TypeEngine Themes", categories_path(@category_id = "1010") %></li>
+					</ul>
+				</li>	
 			</ul>
 		</div>
 	</div>

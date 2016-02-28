@@ -3,6 +3,7 @@
 //= require jquery.nicescroll
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .
 //= require form
 
@@ -128,3 +129,87 @@ function shakeModal(){
                 $('#loginModal .modal-dialog').removeClass('shake'); 
     }, 1000 ); 
 }
+
+$(document).ready(function () {
+	$(".one").hover(
+		function () {
+			$('ul.wp_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.wp_drp').slideUp('medium');
+		}
+	);
+
+	$(".two").hover(
+		function () {
+			$('ul.ht_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.ht_drp').slideUp('medium');
+		}
+	);
+
+	$(".three").hover(
+		function () {
+			$('ul.mark_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.mark_drp').slideUp('medium');
+		}
+	);
+
+	$(".four").hover(
+		function () {
+			$('ul.cms_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.cms_drp').slideUp('medium');
+		}
+	);
+
+	$(".five").hover(
+		function () {
+			$('ul.com_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.com_drp').slideUp('medium');
+		}
+	);
+
+	$(".six").hover(
+		function () {
+			$('ul.layer_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.layer_drp').slideUp('medium');
+		}
+	);
+
+	$(".seven").hover(
+		function () {
+			$('ul.muse_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.muse_drp').slideUp('medium');
+		}
+	);
+
+	$(".eight").hover(
+		function () {
+			$('ul.design').slideDown('medium');
+		}, 
+		function () {
+			$('ul.design').slideUp('medium');
+		}
+	);
+
+	$(".nine").hover(
+		function () {
+			$('ul.more_drp').slideDown('medium');
+		}, 
+		function () {
+			$('ul.more_drp').slideUp('medium');
+		}
+	);
+
+});

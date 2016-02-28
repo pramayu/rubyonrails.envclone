@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+$font-stack: "Roboto", Helvetica, Arial;
 body {
 	margin: 0 auto;
 	padding: 0px;
@@ -108,10 +109,11 @@ a {
 	}
 	.nav2 .menu3 li >a {
 		color: #848484;
-		font-weight: 500;
+		font-weight: 400;
 		/* padding: 10px 0px; */
 		padding-right: 0px;
 		padding-left: 0px;
+		/*font-family: $font-stack;*/
 		&:hover {
 			color:#fff;
 		}
@@ -277,6 +279,51 @@ a {
 	}
 
 }
+
+#mkhd {
+	.nounou {
+		.drp-down {
+			display: none;
+			position: absolute;
+			z-index: 9999;
+			background-color: #fff;
+			margin-top: -2px;
+			width: 210px;
+			border-radius: 3px;
+			list-style: none;
+			padding: 0px;
+			box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+			li {
+				padding: 6px 10px;
+				a {
+					text-decoration: none;
+					color: #777;
+					font-size: 12px !important;
+				}
+				&:hover {
+					background-color: #F5F5F5;
+				}
+			}
+			.lig {
+				border-bottom: 1px solid #F1F1F1;
+			}
+		}
+	}
+}
+
+.drp-down:before {
+	content: "";
+	width: 0;
+	height: 0;
+	margin-top:-10px;
+	margin-left: 16px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #fff;
+	position: absolute;
+	z-index: 999;
+}
+
 
 @import "footer";
 @import "new";

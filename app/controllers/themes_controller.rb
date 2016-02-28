@@ -2,6 +2,7 @@ class ThemesController < ApplicationController
 
 	before_action :find_themes, only: [:show, :edit, :update, :delete]
 	before_action :authenticate_user!, except: [:index, :show]
+	before_action :find_category
 
 	def index
 		if params[:tag]
@@ -14,6 +15,8 @@ class ThemesController < ApplicationController
 			@themes = Theme.fileinclude_with(params[:fileinclude]).paginate(:page => params[:page], :per_page => 30)
 		elsif params[:device]
 			@themes = Theme.device_with(params[:device]).paginate(:page => params[:page], :per_page => 30)
+		elsif params[:categories]
+			@themes = Theme.where("category_id in (?)", params[:categories]).paginate(:page => params[:page], :per_page => 30)
 		else
 			@themes = Theme.all.order("created_at desc").paginate(:page => params[:page], :per_page => 30)
 		end
@@ -76,5 +79,9 @@ class ThemesController < ApplicationController
 
 	def find_themes
 		@theme = Theme.find(params[:id])
+	end
+
+	def find_category
+		@category = Category.find_by_id(params[:category_id])
 	end
 end

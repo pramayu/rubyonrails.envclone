@@ -1,3 +1,4 @@
+$font-stack: "Roboto", Helvetica, Arial;
 .cat-src {
 	.kjd {
 		height: 190px;
@@ -5,4 +6,9 @@
 			height: 190px;
 		}
 	}
+}
+.mcmc {
+	font-size: 18px;
+	font-family: $font-stack;
+	margin-bottom: 25px;
 }

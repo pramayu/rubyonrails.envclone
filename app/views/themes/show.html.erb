@@ -4,7 +4,7 @@
 			<h4>
 				<span><%= link_to "Home", themes_path %></span>
 				<i class="fa fa-angle-double-right"></i>
-				<span><%= link_to @theme.category.name, themes_path %></span>
+				<span><%= link_to @theme.category.name, categories_path(@theme.category_id) %></span>
 				<i class="fa fa-angle-double-right"></i>
 				<span><%= link_to @theme.subcategory.name, themes_path %></span>
 			</h4>

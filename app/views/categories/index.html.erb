@@ -1,7 +1,8 @@
-<div class="main-detail cat-src">
+<div class="main-detail cat-src xoxoi">
 	<div class="header kjd">
 		<div class="hov1">
 			<div class="capt">
+				<h2 class="mcmc"><span><%= @themes.count %></span> Templates and Themes From $26</h2>
 				<div class="form-group inpt">
 					<div class="container con-custom-detail">
 						<span><input type="text" class="form-control ids" placeholder="e.g. responsive wordpress"></span>
@@ -10,5 +11,55 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="filter"></div>
+	<div class="fret">
+		<div class="container con-custom-detail">
+			<div class="row">
+				<% @themes.each do |theme| %>
+					<div class="col-xs-6 col-md-3 boop">
+						<div class="thumbnail thumb-fret">
+							<a href="#">
+								<%= image_tag theme.thumb.url(:large) %>
+							</a>
+							<%= link_to theme_path(theme), class: "name-pla" do %>
+								<p class="iu"><%= theme.name %></p>
+								<em class="coit"><span class="joi"><%= theme.category.name %></span><i class="fa fa-angle-right"></i><span class="joi"><%= theme.subcategory.name %></span></em>
+							<% end %>
+							<div class="propo">
+								<div class="pull-left">
+									<div class="money">
+										<span class="uang">$<%= theme.price %></span>
+									</div>
+								</div>
+								<div class="pull-right">
+									<ul class="list-inline">
+										<li class="like-bro okok">
+											<%= link_to "", themes_path, class: "like-btn" %>
+										</li>
+										<li class="coll-bro okok">
+											<%= link_to "", themes_path, class: "collect-btn" %>
+										</li>
+										<li class="buy-bro okok">
+											<%= link_to "", themes_path, class: "buy-btn" %>
+										</li>
+									</ul>
+								</div>
+								<div class="clear">	</div>
+							</div>
+						</div>
+						<div class="the-seller">
+							<div class="img-pu">
+								<%= image_tag "xj.jpg", class: "img-pi" %>
+								<span class="nam">by <%= theme.user.firstname + ' ' +theme.user.lastname  %></span>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="cf">
+		<%= will_paginate @themes %>
 	</div>
 </div>
