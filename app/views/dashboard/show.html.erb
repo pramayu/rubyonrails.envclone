@@ -1,0 +1,115 @@
+<div class="head xcsd">
+	<div class="container con-custom-detail">
+		<div class="uclok">
+			<h4>
+				<span><%= link_to "Home", themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+				<span><%= link_to "My Account", dashboard_path(@user) %></span>
+			</h4>
+		</div>
+		<div class="tab-panel">
+			<ul class="nav nav-tabs" role="tablist">
+				<% if user_signed_in? && current_user.id == @user.id %>
+					<li role="presentation" class="active"><%= link_to "Dashboard", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Settings", edit_user_registration_path %></li>
+					<li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Earnings", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Statement", dashboard_path(@user) %></li>
+				<% else %>
+					<li role="presentation" class="active"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Portofolio", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Following", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Followers", dashboard_path(@user) %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container con-custom-detail vdfa">
+	<div class="col-md-6 edit-left dash-left">
+		<div class="dash-main">
+			<h4>Welcome and congratulations on becoming an author with Envato Market.</h4>
+			<p>Now you can sell your digital items to millions of users and make money from it.</p>
+			<div class="coul">
+				<div class="dash-l cous">
+					<h4>Upload your item</h4>
+					<p class="con">
+						Start uploading your digital items and working with our review team to make sure they are in great shape to start selling.
+					</p>
+					<%= link_to "Upload Item", new_theme_path, class: "up-dash" %>
+				</div>
+				<div class="dash-r cous">
+					<h4>Your profile</h4>
+					<p class="con">
+						Fill out your profile so our buyers know who created the items they're buying - doing this means you can start building relationships and a reputation on Envato Market.
+					</p>
+					<%= link_to "Take me to my Profile", profile_dashboard_index_path(@user), class: "up-dash" %>
+				</div>
+				<div class="clear"></div>
+				<p>Thank you again for becoming an author and we hope you have lots of success with us!</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 edit-right dash-right">
+		<div class="edit-cat oodh">
+			<div class="titlesd">
+				<h4>Upload Item</h4>
+			</div>
+			<div class="conhfs">
+				<%= simple_form_for @theme do |f| %>
+					<div class="cojhag">
+						<div class="form-group ryt">
+							<%= f.collection_select :category_id, Category.order(:name), :id, :name, { prompt: "Site Templates" }, {  class: "form-control cat-form"} %>
+						</div>
+						<div class="form-group ryt">
+							<%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, { prompt: "Categories" }, { class: "form-control subcat cat-form" } %>
+						</div>
+					</div>
+					<div class="sfrfds">
+						<div class="catbtn">
+							<%= f.submit "Next", class: "btn btn-default btn-upjk" %>
+						</div>
+					</div>
+					<div class="clear"></div>
+				<% end %>
+			</div>
+		</div>
+		<div class="author-resource oodh">
+			<div class="titlesd">
+				<h4>Author Resources</h4>
+			</div>
+			<div class="conhfs">
+				<ul class="auth-res">
+					<li><a href="#">Analytics</a></li>
+					<li><a href="#">Asset Resources</a></li>
+					<li><a href="#">Asset Use Guidelines</a></li>
+					<li><a href="#">Author Guide</a></li>
+					<li><a href="#">Authoring Tutorial</a></li>
+					<li><a href="#">Knowledgebase</a></li>
+					<li><a href="#">Model Releases</a></li>
+					<li><a href="#">Selling Tips</a></li>
+					<li><a href="#">Watermarks</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="announ author-resource oodh">
+			<div class="titlesd">
+				<h4>Previous Announcements</h4>
+			</div>
+			<div class="conhfs">
+				<ul class="auth-res">
+					<li><a href="#">The Pros & Cons of WordPress eCommerce themes for niche markets</a></li>
+					<li><a href="#">ENVATO FAMOUS FIVE #7 - 5 Envato items that have popped up in famous places</a></li>
+					<li><a href="#">Most Wanted - Shopify Themes. $8,000 up for grabs! We're looking for the best new Shopify Themes.</a></li>
+					<li><a href="#">Most Wanted - Business Themes We Don’t Have Yet. $10,000 up for grabs! We're looking for the best new Business Themes We Don’t Have Yet. </a></li>
+					<li><a href="#">Most Wanted - Sketch Templates. $8,000 up for grabs! We're looking for the best Sketch Templates.</a></li>
+					<li><a href="#">Designers unite! Win $2,000 in our brand new community event where you design and share Author Item Page & Profile templates for your fellow community members to use.</a></li>
+					<li><a href="#">Designers unite! Win $2,000 in our brand new community event where you design and share Author Item Page & Profile templates for your fellow community members to use.</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

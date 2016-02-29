@@ -8,11 +8,17 @@ Rails.application.routes.draw do
   get 'themes/fileincludes/:fileinclude', to: 'themes#index', as: :fileinclude, :constraints => { :compatible => /[^\/]+/ }
   get 'themes/devices/:device', to: 'themes#index', as: :device,  :constraints => { :compatible => /[^\/]+/ }
   get 'categories/:categories', to: 'categories#index', as: :categories,  :constraints => { :compatible => /[^\/]+/ }
-  # get 'categories/:wordpress', to: 'categories#index', as: :wordpress,  :constraints => { :compatible => /[^\/]+/ }
+
+  get 'user/:id', to: 'dashboard#show', as: :user_dashboard
   resources :themes do
   	resources :comments
   end
   resources :categories, only: [:index]
+  resources :dashboard, only: [:show, :create] do
+    collection do 
+      get 'profile/:id', to: 'dashboard#profile', as: :profile
+    end
+  end
  
 
 end

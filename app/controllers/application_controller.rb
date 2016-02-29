@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    themes_path
+    dashboard_path(@user)
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?
