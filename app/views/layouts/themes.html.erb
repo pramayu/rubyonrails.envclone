@@ -12,23 +12,23 @@
 	<div class="nav1 navbar navbar-default">
 		<div class="container con-custom-detail">
 			<div class="navbar-header">
-				<%= link_to (image_tag "logo.png", width: "20"), themes_path, class: "navbar-brand" %>
+				<%= link_to "Envclone", themes_path, class: "navbar-brand log-font" %>
 			</div>
 			<ul class="menu2 nav navbar-nav navbar-right">
 				<li class="bout">
 					<% if user_signed_in? %>
 						<%= link_to current_user.firstname+' '+current_user.lastname, new_theme_path, class: "signup" %>
 						<ul class="koukou">
-							<li class="prof"><a href="#">Profile</a></li>
+							<li class="prof"><%= link_to "Profile", profile_dashboard_index_path(current_user.id), class: "prof" %></li>
 							<li class="actn"><a href="#">Envclone Account</a></li>
-							<li class="set"><a href="#">Settings</a></li>
+							<li class="set"><%= link_to "Settings", edit_profile_path(current_user.username), class: "set" %></li>
 							<li class="down"><a href="#">Downloads</a></li>
 							<li class="fav"><a href="#">Favorite</a></li>
 							<li class="collect"><a href="#">Collection</a></li>
 							<li class="folw"><a href="#">Follow Feed</a></li>
 							<li class="stat"><a href="#">Statement</a></li>
 							<li class="lig sf"><a href="#">Make Deposit</a></li>
-							<li class="dsh"><a href="#">Author Dashboard</a></li>
+							<li class="dsh"><%= link_to "Author Dashboard", dashboard_path(current_user.id) %></li>
 							<li class="upld"><a href="#">Upload</a></li>
 							<li class="earn"><a href="#">Earnings</a></li>
 							<li class="trk"><a href="#">Withdrawals</a></li>

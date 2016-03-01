@@ -1,30 +1,221 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :firstname, required: true, autofocus: true %>
-    <%= f.input :lastname, required: true %>
-    <%= f.input :email, required: true %>
-    <%= f.input :username, required: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+<div class="head xcsd">
+  <div class="container con-custom-detail">
+    <div class="uclok">
+      <h4>
+        <span><%= link_to "Home", themes_path %></span>
+        <i class="fa fa-angle-double-right"></i>
+        <span><%= link_to "My Account", dashboard_path(@user.id) %></span>
+      </h4>
+    </div>
+    <div class="tab-panel">
+      <ul class="nav nav-tabs" role="tablist">
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <li role="presentation"><%= link_to "Dashboard", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+          <li role="presentation" class="active"><%= link_to "Settings", edit_profile_path(current_user.username) %></li>
+          <li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Earnings", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Statement", dashboard_path(@user) %></li>
+        <% else %>
+          <li role="presentation" class="active"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+          <li role="presentation"><%= link_to "Portofolio", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Following", dashboard_path(@user) %></li>
+          <li role="presentation"><%= link_to "Followers", dashboard_path(@user) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+</div>
+<div class="container con-custom-detail vdfa">
+  <div class="col-md-6 edit-right profile-right">
+    <div class="ti-rl">
+      <h4><%= current_user.firstname.capitalize + ' ' + current_user.lastname.capitalize %></h4>
+      <span>Country Indentity: <%= current_user.country %></span>
+      <p>Member Since <%= current_user.created_at.strftime("%B %Y") %></p>
+    </div>
+    <ul class="foo-bars" role="tablist">
+      <li role="presentation" class="active"><a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">Personal Information</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Badges</a></li>
+      <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Email Setting</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Invoice &amp; Credit Note Settings</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Item Support Settings</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Item Support Vacations</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Autor Team</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Featured Item</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Exclusivity of Your Items</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Item Licenses</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Tax Information</a></li>
+      <li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">Your Social Network</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">API Keys</a></li>
+    </ul>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <div class="col-md-6 edit-left profile-left edt-left">
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="personal">
+        <div class="head2">
+          <h4>Personal Information</h4>
+          <p>We do not sell or share your details without your permission. Find out more in our privacy policy.</p>
+        </div>
+        <div class="bill">
+          <p>Your username, email and password can be updated via your <%= link_to "Envato Account settings.", themes_path %></p>
+          <h4>Billing Information</h4>
+        </div>
+        <div class="froe">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs cocoky">
+              <div class="form-group">
+                <%= f.input :firstname, required: true, autofocus: true, label: false, placeholder: "Firstname" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :lastname, required: true, label: false, placeholder: "Lastname" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :company_name, label: false, placeholder: "Company name" %>
+                <span>If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+              </div>
+              <div class="form-group">
+                <%= f.input :country, {prompt: "Select Country", label: false  }%>
+              </div>
+              <div class="form-group">
+                <%= f.input :address , label: false, placeholder: "Address" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :city, label: false, placeholder: "City" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :region, label: false, placeholder: "Region / State / Province" %>
+              </div>
+              <div class="form-group">
+                <%= f.input :postal_code, label: false, placeholder: "Zip / Postal code" %>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <div class="form-group">
+                <%= f.input :current_password, required: true, placeholder: "Current password", label: false %>
+                <span>We need your current password to confirm your changes</span>
+              </div>
+              <div class="form-actions">
+              <%= f.button :submit, "Save" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="profile">
+        <div class="head2">
+          <h4>Public Profile</h4>
+          <p>We do not sell or share your details without your permission. Find out more in our privacy policy.</p>
+        </div>
+         <div class="froe">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  multipart: true }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs cocoky">
+              <div class="form-group">
+                <span>Upload an avatar:</span>
+                <%= f.file_field :profile, required: true, autofocus: true, label: false %>
+              </div>
+              <div class="form-group">
+                <span>Upload a homepage image:</span>
+                <%= f.file_field :homepage, required: true, autofocus: true, label: false %>
+              </div>
+              <div class="form-group">
+                <%= f.check_box :show_country %>
+                <span>Show country on your profile and badges</span>
+              </div>
+              <div class="form-group">
+                <%= f.input :profile_heading, label: false, placeholder: "Profile heading" %>
+                <span>Appears on your profile page</span>
+              </div>
+              <div class="form-group">
+                <%= f.input :profile_text , label: false, placeholder: "Profile text and add html tag for styling" %>
+              </div>
+              <div class="form-group">
+                <%= f.check_box :available_freelance %>
+                <span>Yes, advertise my availability on my profile page</span>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <div class="form-group">
+                <%= f.input :current_password, required: true, placeholder: "Current password", label: false %>
+                <span>We need your current password to confirm your changes</span>
+              </div>
+              <div class="form-actions">
+              <%= f.button :submit, "Save" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="social">
+        <div class="head2">
+          <h4>Social Network</h4>
+          <p>We do not sell or share your details without your permission. Find out more in our privacy policy.</p>
+        </div>
+        <div class="froe sdfg">
+           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put,  multipart: true }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs cocoky bangke">
+              <div class="form-group">
+                <%= image_tag "behance.svg", class: "ico-sos" %>
+                <%= f.input :behance, required: true, autofocus: true, label: false, placeholder: "Behance" %>
+              </div>
+              <div class="form-group">
+                <%= image_tag "deviantart.svg", class: "ico-sos" %>
+                <%= f.input :deviantart, label: false, placeholder: "DeviantArt"  %>
+              </div>
+               <div class="form-group">
+                <%= image_tag "dribbble.svg", class: "ico-sos" %>
+                <%= f.input :dribbble, label: false, placeholder: "Dribbble"  %>
+              </div>
+              <div class="form-group">
+                <%= image_tag "facebook.svg", class: "ico-sos" %>
+                <%= f.input :facebook, label: false, placeholder: "Facebook"  %>
+              </div>
+              <div class="form-group">
+                <%= image_tag "github.svg", class: "ico-sos" %>
+                <%= f.input :github, label: false, placeholder: "Github"  %>
+              </div>
+               <div class="form-group">
+                <%= image_tag "googleplus.svg", class: "ico-sos" %>
+                <%= f.input :googleplus, label: false, placeholder: "Google +"  %>
+              </div>
+              <div class="form-group">
+                <%= image_tag "linkedin.svg", class: "ico-sos" %>
+                <%= f.input :linkedin, label: false, placeholder: "Linkedin"  %>
+              </div>
+              <div class="form-group">
+                <%= image_tag "twitter.svg", class: "ico-sos" %>
+                <%= f.input :twitter, label: false, placeholder: "Twitter"  %>
+              </div>
+              <div class="form-group">
+                <%= image_tag "youtube.svg", class: "ico-sos" %>
+                <%= f.input :youtube, label: false, placeholder: "Youtube"  %>
+              </div>
+               <div class="form-group">
+                <%= image_tag "reddit.svg", class: "ico-sos" %>
+                <%= f.input :reddit, label: false, placeholder: "Reddit"  %>
+              </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <div class="form-group">
+                <%= f.input :current_password, required: true, placeholder: "Current password", label: false %>
+                <span>We need your current password to confirm your changes</span>
+              </div>
+              <div class="form-actions">
+              <%= f.button :submit, "Save", class: "svg-btn" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

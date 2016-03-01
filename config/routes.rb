@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  devise_scope :user do 
+    get 'user/:username/profile/edit', to: 'devise/registrations#edit', as: :edit_profile
+  end
+
   root 'welcome#index'
   get 'themes/tags/:tag', to: 'themes#index', as: :tag, :constraints => { :compatible => /[^\/]+/ }
   get 'themes/browsers/:browser', to: 'themes#index', as: :browser, :constraints => { :compatible => /[^\/]+/ }
@@ -14,6 +19,7 @@ Rails.application.routes.draw do
   	resources :comments
   end
   resources :categories, only: [:index]
+
   resources :dashboard, only: [:show, :create] do
     collection do 
       get 'profile/:id', to: 'dashboard#profile', as: :profile

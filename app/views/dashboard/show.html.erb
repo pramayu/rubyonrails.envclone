@@ -4,7 +4,7 @@
 			<h4>
 				<span><%= link_to "Home", themes_path %></span>
 				<i class="fa fa-angle-double-right"></i>
-				<span><%= link_to "My Account", dashboard_path(@user) %></span>
+				<span><%= link_to "My Account", dashboard_path(@user.id) %></span>
 			</h4>
 		</div>
 		<div class="tab-panel">
@@ -12,7 +12,7 @@
 				<% if user_signed_in? && current_user.id == @user.id %>
 					<li role="presentation" class="active"><%= link_to "Dashboard", dashboard_path(@user) %></li>
 					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
-					<li role="presentation"><%= link_to "Settings", edit_user_registration_path %></li>
+					<li role="presentation"><%= link_to "Settings",edit_profile_path(current_user.username) %></li>
 					<li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
 					<li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
 					<li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>

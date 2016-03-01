@@ -1,0 +1,178 @@
+<div class="head xcsd">
+	<div class="container con-custom-detail">
+		<div class="uclok">
+			<h4>
+				<span><%= link_to "Home", themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+				<span><%= link_to "My Account", dashboard_path(@user.id) %></span>
+			</h4>
+		</div>
+		<div class="tab-panel">
+			<ul class="nav nav-tabs" role="tablist">
+				<% if user_signed_in? && current_user.id == @user.id %>
+					<li role="presentation"><%= link_to "Dashboard", dashboard_path(@user) %></li>
+					<li role="presentation" class="active"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Settings", edit_profile_path(current_user.username) %></li>
+					<li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Earnings", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Statement", dashboard_path(@user) %></li>
+				<% else %>
+					<li role="presentation" class="active"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Portofolio", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Following", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Followers", dashboard_path(@user) %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container con-custom-detail vdfa">
+	<div class="col-md-6 edit-left profile-left">
+		<div class="profile-main">
+			<div class="context-header">
+				<% if @user.homepage? %>
+					<%= image_tag @user.homepage.url(:medium), class: "img-head" %>
+				<% else %>
+					<%= image_tag "header.jpg", class: "img-head" %>
+				<% end %>
+			</div>
+			<div class="profile-text">
+				<%= simple_format(@user.profile_text) %>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 edit-right profile-right">
+		<div class="prof-badg oodh lol">
+			<div class="conhfs">
+				<div class="img-profile">
+					<% if @user.profile? %>
+						<%= image_tag @user.profile.url(:thumb), class: "pfo" %>
+					<% else %>
+						<%= image_tag "blank_user.png", class: "pfo" %>
+					<% end %>
+					<h4><%= @user.firstname.capitalize + ' ' + @user.lastname.capitalize %></h4>
+					<ul class="list-inline yuhuu">
+						<li><%= image_tag "affiliate_level_8.svg", class: "img-badge" %></li>
+						<li><%= image_tag "author_level_15.svg", class: "img-badge" %></li>
+						<li><%= image_tag "exclusive-s.svg", class: "img-badge" %></li>
+						<li><%= image_tag "had_featured_item.svg", class: "img-badge" %></li>
+						<li><%= image_tag "had_trending_item.svg", class: "img-badge" %></li>
+						<li><%= image_tag "interviewed-s.svg", class: "img-badge" %></li>
+						<li><%= image_tag "power_elite-s.svg", class: "img-badge" %></li>
+						<li><%= image_tag "super_sheriff.svg", class: "img-badge" %></li>
+						<li><%= image_tag "veteran_level_3.svg", class: "img-badge" %></li>
+						<li><%= image_tag "was_top_monthly_author.svg", class: "img-badge" %></li>
+						<li><%= image_tag "was_weekly_top_seller.svg", class: "img-badge" %></li>
+					</ul>
+					<div class="kdf">
+						<a href="#" class="view-por">View Portofolio</a>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="info-okk oodh">
+			<div class="conhfs">
+				<div class="sum-sales oioi">
+					<div class="sales">
+						<p class="sum-sa boo">
+							<span>249,980</span> Sales
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="info-okk oodh">
+			<div class="conhfs">
+				<div class="sum-sales oioi">
+					<div class="sales">
+						<p class="sum-sa vokf boo">
+							<span>249,980</span> Followers
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="aut-rate oodh">
+			<div class="conhfs">
+				<p class="boo cool">Author Rating:</p>
+			</div>
+		</div>
+		<div class="qwi oodh">
+			<div class="conhfs">
+				<% unless @user.country.blank? %>
+					<p class="boo cool kl">Country: <span><%= @user.country %></span></p>
+				<% end %>
+				<p class="boo cool">Member Since: <span><%= @user.created_at.strftime("%m - %Y") %></span></p>
+				<% unless @user.available_freelance.blank? %>
+					<p class="boo cool">Freelance: <span>I am available</span></p>
+				<% end %>
+			</div>
+		</div>
+		<div class="social-profile oodh">
+			<div class="titlesd">
+				<h4>Social Profiles</h4>
+			</div>
+			<div class="conhfs">
+				<ul class="list-inline yuhuu">
+					<% unless @user.behance.blank? %>
+						<li><%= link_to (image_tag "behance.svg", class: "fck"), "http://#{@user.behance}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.deviantart.blank? %>
+						<li><%= link_to (image_tag "deviantart.svg", class: "fck"), "http://#{@user.deviantart}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.dribbble.blank? %>
+						<li><%= link_to (image_tag "dribbble.svg", class: "fck"), "http://#{@user.dribbble}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.facebook.blank? %>
+						<li><%= link_to (image_tag "facebook.svg", class: "fck"), "http://#{@user.facebook}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.github.blank? %>
+						<li><%= link_to (image_tag "github.svg", class: "fck"), "http://#{@user.github}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.googleplus.blank? %>
+						<li><%= link_to (image_tag "googleplus.svg", class: "fck"), "http://#{@user.googleplus}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.linkedin.blank? %>
+						<li><%= link_to (image_tag "linkedin.svg", class: "fck"), "http://#{@user.linkedin}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.twitter.blank? %>
+						<li><%= link_to (image_tag "twitter.svg", class: "fck"), "http://#{@user.twitter}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.youtube.blank? %>
+						<li><%= link_to (image_tag "youtube.svg", class: "fck"),"http://#{ @user.youtube}", target: "blank" %></li>
+					<% end %>
+					<% unless @user.reddit.blank? %>
+						<li><%= link_to (image_tag "reddit.svg", class: "fck"), "http://#{@user.reddit}", target: "blank" %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="email_you oodh">
+			<div class="titlesd">
+				<% if user_signed_in? == current_user %>
+					<h4>Email <span><%= current_user.firstname+ ' ' +current_user.lastname %></span></h4>
+				<% elsif user_signed_in? != current_user %>
+					<h4>Email <span><%= @user.firstname+ ' ' +@user.lastname %></span></h4>
+				<% end %>
+			</div>
+			<div class="conhfs rock">
+				<form action="#">
+					<div class="form-group">
+						<span>From</span>
+						<input type="text" value="<%= current_user.email %>" class="form-control">
+					</div>
+					<div class="form-group">
+						<span>Message</span>
+						<textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+					</div>
+					<div class="biut">
+						<input type="submit" value="Send" class="btn-send">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

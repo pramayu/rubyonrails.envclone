@@ -6,13 +6,18 @@ class User < ActiveRecord::Base
 	has_many :themes
 	has_many :comments
 
+	has_attached_file :profile, styles: { medium: "300x300#", thumb: "80x80#" }
+	validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/
+	has_attached_file :homepage, styles: { medium: "590x245#" }
+	validates_attachment_content_type :homepage, content_type: /\Aimage\/.*\Z/
+
 	def login=(login)
 		@login = login
 	end
 
-  def login
-    @login || self.username || self.email
-  end
+	def login
+		@login || self.username || self.email
+	end
 
 	def self.find_for_database_authentication(warden_conditions)
 		conditions = warden_conditions.dup

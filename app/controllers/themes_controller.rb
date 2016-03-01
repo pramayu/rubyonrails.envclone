@@ -4,6 +4,8 @@ class ThemesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :find_category
 
+	layout "themes"
+
 	def index
 		if params[:tag]
 			@themes = Theme.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 30)
