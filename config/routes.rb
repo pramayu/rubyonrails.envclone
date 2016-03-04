@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => :registrations }
 
   devise_scope :user do 
     get 'user/:username/profile/edit', to: 'devise/registrations#edit', as: :edit_profile
@@ -16,15 +16,16 @@ Rails.application.routes.draw do
 
   get 'user/:id', to: 'dashboard#show', as: :user_dashboard
   resources :themes do
-  	resources :comments
+    resources :comments
+    member do 
+      get 'like', to: 'themes#upvote'
+    end
   end
   resources :categories, only: [:index]
 
   resources :dashboard, only: [:show, :create] do
-    collection do 
+    collection do
       get 'profile/:id', to: 'dashboard#profile', as: :profile
     end
   end
- 
-
 end

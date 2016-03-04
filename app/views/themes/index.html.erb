@@ -56,8 +56,8 @@
 								</div>
 								<div class="pull-right">
 									<ul class="list-inline">
-										<li class="like-bro okok">
-											<%= link_to "", themes_path, class: "like-btn" %>
+										<li class="like-bro okok bind-<%= theme.id %>">
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes" %>
 										</li>
 										<li class="coll-bro okok">
 											<%= link_to "", themes_path, class: "collect-btn" %>

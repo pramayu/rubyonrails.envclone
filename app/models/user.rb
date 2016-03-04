@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 		 :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
 	has_many :themes
 	has_many :comments
+	acts_as_voter
 
 	has_attached_file :profile, styles: { medium: "300x300#", thumb: "80x80#" }
 	validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/

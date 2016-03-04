@@ -3,6 +3,7 @@
 //= require jquery.nicescroll
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.raty.min.js
 //= require jquery.turbolinks
 //= require_tree .
 //= require form
@@ -14,7 +15,6 @@ $(function(){
 		interval: 10000000
 	})
 });
-
 
 // $(function(){
 // 	$('#myForm').ajaxForm({
@@ -45,6 +45,24 @@ $(document).ready(function(){
 			$("#em_lbl").text(filename);
 		}
 	});
+
+// $('#star').raty({
+//  readOnly: true,
+//  score: <%= @theme.average_rating %>,
+//  path: '/assets'
+// });
+
+// $('#user_star').raty({
+//   score: <%= @rating.score %>,
+//   path: '/assets',
+//   click: function(score, evt){
+//     $.ajax({
+//       url: '/ratings/' + <%= @rating.id %>,
+//       type: 'PATCH',
+//       data: { score: score }
+//     });
+//   }
+// });
 
 	$("#previews_").on("change", function(e){
 		var files = $(this)[0].files;
@@ -230,5 +248,6 @@ $(document).ready(function () {
 		}
 	);
 
-
 });
+
+

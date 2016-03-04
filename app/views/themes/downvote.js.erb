@@ -1,0 +1,4 @@
+$('.down-votes').bind('ajax:success', function() {
+ $('.vcount-<%= @theme.id %>').html('<%=escape_javascript @theme.get_downvotes.size.to_s %>');
+ $('.vcount-<%= @theme.id %>').replaceWith('<%= escape_javascript render 'like', theme: @theme %>');
+});

@@ -6,6 +6,7 @@
 				<i class="fa fa-angle-double-right"></i>
 				<span><%= link_to "My Account", dashboard_path(@user.id) %></span>
 			</h4>
+			<h2 class="profile_heading"><%= @user.profile_heading.capitalize %></h2>
 		</div>
 		<div class="tab-panel">
 			<ul class="nav nav-tabs" role="tablist">
@@ -159,19 +160,23 @@
 				<% end %>
 			</div>
 			<div class="conhfs rock">
-				<form action="#">
-					<div class="form-group">
-						<span>From</span>
-						<input type="text" value="<%= current_user.email %>" class="form-control">
-					</div>
-					<div class="form-group">
-						<span>Message</span>
-						<textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
-					</div>
-					<div class="biut">
-						<input type="submit" value="Send" class="btn-send">
-					</div>
-				</form>
+				<% if user_signed_in? %>
+					<form action="#">
+						<div class="form-group">
+							<span>From</span>
+							<input type="text" value="<%= current_user.email %>" class="form-control">
+						</div>
+						<div class="form-group">
+							<span>Message</span>
+							<textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+						</div>
+						<div class="biut">
+							<input type="submit" value="Send" class="btn-send">
+						</div>
+					</form>
+				<% else %>
+					<span>Please sign in to contact this author</span>
+				<% end %>
 			</div>
 		</div>
 	</div>

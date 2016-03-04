@@ -1,15 +1,23 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :login, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="container con-custom-detail hdf">
+	<div class="new-session">
+		<div class="foes">
+			<h4>Sign In</h4>
+			<span>enter your email / username and password </span>
+		</div>
+		<div class="fow">
+			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="form-inputs">
+			  	<div class="form-group">
+				    <%= f.text_field :login, required: true, autofocus: true, label: false, placeholder: "email or username", class: "form-control joy" %>
+			    </div>
+			    <div class="form-group">
+				    <%= f.password_field :password, required: true, label: false, placeholder: "password", class: "form-control joy" %>
+				</div>
+			</div>
+			<div class="form-actions lpd">
+			  <%= f.button :submit, "Sign in", class: "lpdb" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

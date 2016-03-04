@@ -4,11 +4,16 @@ class CommentsController < ApplicationController
 		@comment = Comment.create(params[:comment].permit(:content))
 		@comment.user_id = current_user.id
 		@comment.theme_id = @theme.id
-
-		if @comment.save
-			redirect_to theme_path(@theme)
-		else
-			render 'new'
+		respond_to do |format|
+			if @comment.save
+				format.html { redirect_to theme_path(@theme) }
+				format.json
+				format.js
+			else
+				format.html { render 'new' }
+				format.json
+				format.js
+			end
 		end
 	end
 end

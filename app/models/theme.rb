@@ -1,37 +1,38 @@
 class Theme < ActiveRecord::Base
 
-	acts_as_taggable
+  acts_as_taggable
+  acts_as_votable
 
   belongs_to :user
   has_many :comments
 
-	# category and subcategory to themes
-	belongs_to :category
-	belongs_to :subcategory
+  # category and subcategory to themes
+  belongs_to :category
+  belongs_to :subcategory
 
-	# browser to themes
-	has_many :browserthemes
-	has_many :browsers, through: :browserthemes
+  # browser to themes
+  has_many :browserthemes
+  has_many :browsers, through: :browserthemes
 
-	# compatible to themes
-	has_many :compatiblethemes
-	has_many :compatibles, through: :compatiblethemes
+  # compatible to themes
+  has_many :compatiblethemes
+  has_many :compatibles, through: :compatiblethemes
 
-	# files include to themes
-	has_many :fileincludethemes
-	has_many :fileincludes, through: :fileincludethemes
+  # files include to themes
+  has_many :fileincludethemes
+  has_many :fileincludes, through: :fileincludethemes
 
-	# framework to themes
-	has_many :frameworkthemes
-	has_many :frameworks, through: :frameworkthemes
+  # framework to themes
+  has_many :frameworkthemes
+  has_many :frameworks, through: :frameworkthemes
 
-	# software to themes
-	has_many :softwarethemes
-	has_many :softwares, through: :softwarethemes
+  # software to themes
+  has_many :softwarethemes
+  has_many :softwares, through: :softwarethemes
 
-	# email to themes
-	has_many :emailthemes
-	has_many :emails, through: :emailthemes
+  # email to themes
+  has_many :emailthemes
+  has_many :emails, through: :emailthemes
 
 	# device to themes
 	has_many :devicethemes
@@ -127,5 +128,9 @@ class Theme < ActiveRecord::Base
       self.devices = names.split(",").map do |n|
         Device.where(name: n.strip).first_or_create!
       end
+    end
+
+    def average_rating
+      ratings.sum(:score) / ratings.size
     end
 end

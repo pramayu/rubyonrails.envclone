@@ -63,8 +63,12 @@
 				</div>
 				<div class="seller">
 					<div class="img-pro">
-						<%= image_tag "profile_user/avatar.jpg", class: "pro-pic" %>
-						<p class="name-user">Nicky Laatz</p>
+						<% if @theme.user.profile? %>
+							<%= link_to (image_tag @theme.user.profile.url(:thumb), class: "pro-pic"), profile_dashboard_index_path(@theme.user.id) %>
+						<% else %>
+							<%= link_to (image_tag "profile_user/avatar.jpg", class: "pro-pic"), profile_dashboard_index_path(@theme.user.id)  %>
+						<% end %>
+						<p class="name-user"><%= @theme.user.firstname.capitalize + ' ' + @theme.user.lastname.capitalize %></p>
 						<%= link_to "Follow", themes_path, class: "foll" %>
 					</div>
 					<div class="clear"></div>
@@ -75,8 +79,9 @@
 						<span class="tut">More from Nicky Laatz:</span>
 						<ul class="list-inline ouyt">
 							<li>
-								<% @theme.assets.limit(2).each do |other| %>
-									<%= link_to image_tag(other.preview.url(:medium), class: "img-other"), themes_path %>
+								
+								<% @themes.limit(2).each do |theme_lst| %>
+									<%= link_to (image_tag theme_lst.thumb.url(:large), class: "img-other"), theme_path(theme_lst) %>
 								<% end %>
 							</li>
 						</ul>
@@ -98,7 +103,7 @@
 					</div>
 					<div class="rate-s">
 						<p class="rate-f boo">
-							<span></span>Buyer Rating
+							<span><span class="vcount-<%= @theme.id %>"><%= @theme.get_upvotes.size %></span></span> Buyer Likes
 						</p>
 					</div>
 				</div>
@@ -133,21 +138,15 @@
 	    <div role="tabpanel" class="tab-pane" id="comments">
 	    	<div class="col-md-6 show-left">
 	    		<div class="cmks">
-	    			<h4 class="com-count"><%= pluralize(@theme.comments.count, "Comment") %></h4>
-	    			<ul class="popod">
-	    				<% @comments.each do |comment| %>
-	    				<li>
-	    					<%= image_tag "xj.jpg", class: "img-coms" %>
-	    					<span class="nouy"><%= comment.user.firstname + ' ' + comment.user.lastname %></span>
-	    					<p><%= simple_format(comment.content) %></p>
-	    					<span class="time"><%= time_ago_in_words(comment.created_at) %> ago</span>
-	    					<div class="clear"></div>
-	    				</li>
-	    				<% end %>
-	    			</ul>
+	    			<h4 class="com-count" id="com-counts"><%= pluralize(@theme.comments.count, "Comments") %></h4>
+	    			<div id="bravo">
+	    				<ul class="popod" id="com-en">
+		    				<%= render @theme.comments %>
+	    				</ul>
+	    			</div>
 	    			<div class="fgh">
 	    				<% if user_signed_in? %>
-	    				<%= render 'comments/form' %>
+		    				<%= render 'comments/form' %>
 	    				<% end %>
 	    			</div>
 	    		</div>

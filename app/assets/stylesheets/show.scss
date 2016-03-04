@@ -220,6 +220,7 @@ $border : #E1E8ED;
 						border-radius: 3px;
 						font-size: 12px;
 						font-family: $font-stack;
+						text-decoration: none;
 					}
 				}
 				.overall {
@@ -250,7 +251,8 @@ $border : #E1E8ED;
 									background-color: #fff;
 									-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 								    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-								    box-shadow: 0 1px 2px rgba(0,0,0,0.07)
+								    box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+								    width: 90px;
 								}
 							}
 						}
@@ -369,7 +371,7 @@ $border : #E1E8ED;
 	}
 }
 .rate-f:before {
-	content: "\f005";
+	content: "\f164";
 	margin-right: 10px;
 	@extend .icon-s;
 	font-size: 1em !important;
@@ -393,9 +395,10 @@ $border : #E1E8ED;
 				float: left;
 				margin-left: 10px;
 				border-radius: 3px;
+				max-width: 40px;
 			}
 			.nouy {
-				margin-left: 19px;
+				margin-left: 10px;
 				font-weight: bold;
 				color: #555;
 				text-transform: capitalize;
@@ -435,6 +438,7 @@ $border : #E1E8ED;
 			background-color: #34495e;
 			border-radius: 2px;
 			color: #fff;
+			outline: none;
 			font-weight: bold;
 			border: none;
 		}

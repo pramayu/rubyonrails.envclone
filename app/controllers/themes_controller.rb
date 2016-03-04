@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
 
-	before_action :find_themes, only: [:show, :edit, :update, :delete]
+	before_action :find_themes, only: [:show, :edit, :update, :delete, :upvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :find_category
 
@@ -26,6 +26,7 @@ class ThemesController < ApplicationController
 
 	def show
 		@comments = Comment.where(theme_id: @theme)
+		@themes = Theme.all.order("created_at desc")
 	end
 
 	def new
@@ -72,6 +73,15 @@ class ThemesController < ApplicationController
 	def destroy
 		
 	end
+
+  def upvote
+    @theme.upvote_by current_user
+    respond_to do |format|
+    	format.html { redirect_to :back }
+    	format.json { head :no_content }
+    	format.js { render :layout => false }
+    end
+  end
 
 	private
 
