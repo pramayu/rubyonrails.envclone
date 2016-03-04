@@ -1,4 +1,4 @@
 $('#com-en').hide().fadeIn(1000);
 $('#com-en').append("<%= j render @comment %>");
+$('#com-counts').html('<%= escape_javascript @theme.comments.count.to_s %> Comments');
 $('#comment_content').val('');
-$('#com-counts').hide().fadeIn(1000);

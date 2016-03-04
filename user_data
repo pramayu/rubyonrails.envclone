@@ -45,3 +45,7 @@
               </li>
               <% end %>
             </ul>
+
+
+
+            <%= link_to '',dislike_theme_path(theme), :remote => true, method: :get, class: "like-btn down-votes", id: "dislike-vote" %>

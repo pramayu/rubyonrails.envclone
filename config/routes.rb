@@ -14,18 +14,21 @@ Rails.application.routes.draw do
   get 'themes/devices/:device', to: 'themes#index', as: :device,  :constraints => { :compatible => /[^\/]+/ }
   get 'categories/:categories', to: 'categories#index', as: :categories,  :constraints => { :compatible => /[^\/]+/ }
 
-  get 'user/:id', to: 'dashboard#show', as: :user_dashboard
   resources :themes do
     resources :comments
     member do 
       get 'like', to: 'themes#upvote'
+      get 'dislike', to: 'themes#downvote'
     end
   end
   resources :categories, only: [:index]
+  resources :friendships, only: [:create, :destroy, :new]
 
+  get 'user/:id', to: 'dashboard#show', as: :user_dashboard
   resources :dashboard, only: [:show, :create] do
     collection do
       get 'profile/:id', to: 'dashboard#profile', as: :profile
+      get 'following/:id', to: 'dashboard#following', as: :following
     end
   end
 end

@@ -13,6 +13,22 @@
 					<li role="presentation" class="active"><%= link_to "Dashboard", dashboard_path(@user) %></li>
 					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
 					<li role="presentation"><%= link_to "Settings",edit_profile_path(current_user.username) %></li>
+					<% unless @user.friends.blank? %>
+						<li role="presentation">
+							<%= link_to dashboard_path(current_user.username) do %>
+								<span><%= @user.friends.count %></span>
+								<span>Following</span>
+							<% end %>
+						</li>
+					<% end %>
+					<% unless @user.inverse_friends.blank? %>
+						<li role="presentation">
+							<%= link_to dashboard_path(current_user.username) do %>
+								<span><%= @user.inverse_friends.count %></span>
+								<span>Follower</span>
+							<% end %>
+						</li>
+					<% end %>
 					<li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
 					<li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
 					<li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>
@@ -21,8 +37,18 @@
 				<% else %>
 					<li role="presentation" class="active"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
 					<li role="presentation"><%= link_to "Portofolio", dashboard_path(@user) %></li>
-					<li role="presentation"><%= link_to "Following", dashboard_path(@user) %></li>
-					<li role="presentation"><%= link_to "Followers", dashboard_path(@user) %></li>
+					<li role="presentation">
+						<%= link_to profile_dashboard_index_path(@user) do %>
+							<span><%= @user.friends.count %></span>
+							<span>Following</span>
+						<% end %>
+					</li>
+					<li role="presentation">
+						<%= link_to profile_dashboard_index_path(@user) do %>
+							<span><%= @user.inverse_friends.count %></span>
+							<span>Follower</span>
+						<% end %>
+					</li>
 				<% end %>
 			</ul>
 		</div>
@@ -113,3 +139,15 @@
 		</div>
 	</div>
 </div>
+<% @user.friendships.each do |j| %>
+<%= j.friend.username %>
+<%= link_to "Unfollow", j, method: :delete %>
+<% end %>
+
+<br>
+<h4>Friended by Users</h4>
+<ul>
+	<% @user.inverse_friends.each do |k| %>
+		<li><%= k.username %></li>
+	<% end %>
+</ul>

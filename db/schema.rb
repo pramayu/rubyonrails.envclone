@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303172620) do
+ActiveRecord::Schema.define(version: 20160304090432) do
 
   create_table "assets", force: :cascade do |t|
     t.integer  "theme_id",             limit: 4
@@ -137,6 +137,13 @@ ActiveRecord::Schema.define(version: 20160303172620) do
 
   add_index "frameworkthemes", ["framework_id"], name: "index_frameworkthemes_on_framework_id", using: :btree
   add_index "frameworkthemes", ["theme_id"], name: "index_frameworkthemes_on_theme_id", using: :btree
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "friend_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "softwares", force: :cascade do |t|
     t.string   "name",       limit: 255

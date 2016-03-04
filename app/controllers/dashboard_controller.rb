@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
-	before_action :find_user, only: [ :index, :show, :profile]
-	before_action :authenticate_user!, except: [:profile]
+	before_action :find_user, only: [ :index, :show, :profile, :following]
+	before_action :authenticate_user!, except: [:profile, :following]
 
 	layout "themes"
 
@@ -23,6 +23,10 @@ class DashboardController < ApplicationController
 
 	def profile
 		
+	end
+
+	def following
+
 	end
 
 	private

@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
 	has_many :comments
 	acts_as_voter
 
+	has_many :friendships
+	has_many :friends, :through => :friendships
+
+	has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+	has_many :inverse_friends, :through => :inverse_friendships, source: :user
+
 	has_attached_file :profile, styles: { medium: "300x300#", thumb: "80x80#" }
 	validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/
 	has_attached_file :homepage, styles: { medium: "590x245#" }

@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
 
-	before_action :find_themes, only: [:show, :edit, :update, :delete, :upvote]
+	before_action :find_themes, only: [:show, :edit, :update, :delete, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :find_category
 
@@ -49,6 +49,12 @@ class ThemesController < ApplicationController
 		else
 			render 'new'
 		end
+		@friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+		if @friendship.save
+			redirect_to themes_path
+		else
+			redirect_to themes_path
+		end
 	end
 
 	def edit
@@ -76,6 +82,15 @@ class ThemesController < ApplicationController
 
   def upvote
     @theme.upvote_by current_user
+    respond_to do |format|
+    	format.html { redirect_to :back }
+    	format.json { head :no_content }
+    	format.js { render :layout => false }
+    end
+  end
+
+  def downvote
+    @theme.downvote_by current_user
     respond_to do |format|
     	format.html { redirect_to :back }
     	format.json { head :no_content }

@@ -1,4 +1,5 @@
 $font-stack: "Roboto", Helvetica, Arial;
+
 .dash-left {
 	padding-left: 0px;
 	.dash-main {
@@ -377,4 +378,94 @@ $font-stack: "Roboto", Helvetica, Arial;
 	margin-top: 10px;
 	margin-bottom: 5px;
 	color: #454545;
+}
+
+/*follow-main*/
+.follow-left{
+	width: 75% !important;
+	.follow-main {
+		.frend-foll {
+			padding: 0px;
+			list-style: none;
+			.kiuy {
+				background-color: #f5f5f5;
+				border: 1px solid #ededed;
+				margin-bottom: 20px;
+				padding: 20px;
+				border-radius: 3px;
+				.left-gogo {
+					padding-left: 0px;
+					padding-right: 5px;
+					width: 15.5% !important;
+					.foll-img {
+						border-radius: 3px;
+						padding: 3px;
+						border-radius: 3px;
+						background-color: #fff;
+						margin-bottom: 20px;
+						-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+						-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+						box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+
+					}
+					.unfollow {
+						padding: 8px 15px;
+						background-color: #27ae60;
+						border-radius: 3px;
+						color: #fff;
+						font-family: $font-stack;
+						text-decoration: none;
+						border-bottom: 2px solid #1A8849;
+						font-weight: bold;
+						font-size: 13px;
+					}
+				}
+				.center-gogo {
+					padding-left: 0px;
+					padding-right: 5px;
+					width: 34.666667% !important;
+					.fol-name {
+						font-family: $font-stack;
+						color: #777;
+						text-decoration: none;
+						font-weight: bold;
+					}
+					ul.krek {
+						padding-top: 10px;
+						li {
+							margin-bottom: 10px;
+							.fck {
+								width: 30px;
+							}
+						}
+					}
+				}
+				.center2-gogo {
+					padding-left: 0px;
+					padding-top: 10px;
+					width: 31% !important;
+					p {
+						font-size: 12px;
+						font-family: $font-stack;
+						color: #666;
+						margin: 5px 0px;
+					}
+				}
+				.right-gogo {
+					padding: 0px;
+					text-align: center;
+					padding-top: 25px;
+					width: 17.666667% !important;
+					h4 {
+						color: 777;
+					}
+					span {
+						font-size: 12px;
+						color: #666;
+						font-family: $font-stack;
+					}
+				}
+			}
+		}
+	}
 }
