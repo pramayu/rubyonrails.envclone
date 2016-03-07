@@ -27,6 +27,7 @@ class ThemesController < ApplicationController
 	def show
 		@comments = Comment.where(theme_id: @theme)
 		@themes = Theme.all.order("created_at desc")
+		@random_themes = Theme.all.where(user_id: @theme.user.id).where.not(id: @theme.id).order("created_at").limit(2)
 	end
 
 	def new
@@ -50,11 +51,6 @@ class ThemesController < ApplicationController
 			render 'new'
 		end
 		@friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-		if @friendship.save
-			redirect_to themes_path
-		else
-			redirect_to themes_path
-		end
 	end
 
 	def edit
@@ -81,6 +77,7 @@ class ThemesController < ApplicationController
 	end
 
   def upvote
+  	@Theme = Theme.find(params[:id])
     @theme.upvote_by current_user
     respond_to do |format|
     	format.html { redirect_to :back }

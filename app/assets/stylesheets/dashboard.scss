@@ -409,7 +409,7 @@ $font-stack: "Roboto", Helvetica, Arial;
 
 					}
 					.unfollow {
-						padding: 8px 15px;
+						padding: 8px 17px;
 						background-color: #27ae60;
 						border-radius: 3px;
 						color: #fff;
@@ -418,6 +418,7 @@ $font-stack: "Roboto", Helvetica, Arial;
 						border-bottom: 2px solid #1A8849;
 						font-weight: bold;
 						font-size: 13px;
+						width: 86.2813px;
 					}
 				}
 				.center-gogo {
@@ -463,6 +464,127 @@ $font-stack: "Roboto", Helvetica, Arial;
 						font-size: 12px;
 						color: #666;
 						font-family: $font-stack;
+					}
+				}
+			}
+		}
+	}
+}
+.foll-wing {
+	padding: 8px 24px;
+	background-color: #3498db;
+	border-radius: 3px;
+	color: #fff !important;
+	font-family: $font-stack;
+	text-decoration: none !important;
+	border-bottom: 2px solid #1D699C;
+	font-weight: bold;
+	width: 86.2813px;
+	font-size: 13px;
+}
+._foll-shit {
+	padding: 8px 24px;
+	background-color: #3498db;
+	border-radius: 3px;
+	color: #fff !important;
+	font-family: $font-stack;
+	text-decoration: none !important;
+	border-bottom: 2px solid #1D699C;
+	font-weight: bold;
+	width: 86.2813px;
+	margin-left: 35px;
+	font-size: 13px;
+}
+.kds {
+	padding: 8px 18px !important;
+	border:none;
+	outline: none;
+	margin:0px;
+	/*margin-left: 43px;*/
+	border-bottom: 2px solid #138C46;
+	background-color: #2ecc71 !important;
+}
+.njir {
+	padding-top: 6px !important;
+}
+
+.fol-unfo {
+	position: absolute;
+	z-index: 99;
+	top:20px;
+	right: 34px;
+}
+
+.jijik {
+	background-color: #fff !important;
+}
+.port-pret {
+	background-color: #fafafa !important;
+}
+.porto-left {
+	width: 80%;
+	padding-right: 10px;
+	.pot-pla {
+		width: 150.25px !important;
+		height: 100px !important;
+		.oi {
+			font-size: 11px !important;
+			height: 10px !important;
+		}
+		.coit {
+			font-size: 11px !important;
+			line-height: 16px !important;
+		}
+	}
+}
+.porto-right {
+	width: 20%;
+	padding-left: 10px;
+}
+
+.porto-right {
+	.abt-aut {
+	    background-color: #FAFAFA;
+	    border: solid 1px #E1E8ED;
+	    border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		.ttl {
+			text-align: center;
+			background-color: #454545;
+			padding: 10px;
+			border-top-left-radius: 3px;
+			border-top-right-radius: 3px;
+			h4 {
+				font-family: $font-stack;
+				color: #fff;
+				font-size: 13px;
+				font-weight: bold;
+			}
+		}
+		.atf-con {
+			padding: 10px 5px;
+			.wtf-ahh {
+				.img-ahh {
+					width: 60px;
+					padding: 3px;
+					background-color: #fff;
+					border-radius: 2px;
+					float: left;
+					margin-right: 5px;
+				}
+			}
+			.wtf-name, .cool {
+				font-size: 11px;
+				font-family: $font-stack;
+				color: #777;
+			}
+			.xxst {
+				margin-top: 20px;
+				padding-left: 8px;
+				li {
+					margin-bottom: 10px;
+					.fck {
+						width: 25px;
 					}
 				}
 			}

@@ -49,3 +49,29 @@
 
 
             <%= link_to '',dislike_theme_path(theme), :remote => true, method: :get, class: "like-btn down-votes", id: "dislike-vote" %>
+
+
+
+
+<% @user.friendships.each do |j| %>
+<%= j.friend.username %>
+<%= link_to "Unfollow", j, method: :delete %>
+<% end %>
+
+<% @user.friendships.each do |j| %>
+<%= j.friend.username %>
+<%= link_to "Unfollow", j, method: :delete %>
+<% end %>
+
+<br>
+<h4>Friended by Users</h4>
+<ul>
+  <% @user.inverse_friends.each do |k| %>
+    <li><%= k.username %></li>
+  <% end %>
+</ul>
+
+<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>

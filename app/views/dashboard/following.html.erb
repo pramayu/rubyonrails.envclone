@@ -21,7 +21,7 @@
 						<% end %>
 					</li>
 					<li role="presentation">
-						<%= link_to profile_dashboard_index_path(@user) do %>
+						<%= link_to follower_dashboard_index_path(@user) do %>
 							<span><%= @user.inverse_friends.count %></span>
 							<span>Follower</span>
 						<% end %>
@@ -33,15 +33,15 @@
 					<li role="presentation"><%= link_to "Statement", dashboard_path(@user) %></li>
 				<% else %>
 					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
-					<li role="presentation"><%= link_to "Portofolio", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Portofolio", portofolio_dashboard_index_path(@user) %></li>
 					<li role="presentation" class="active">
-						<%= link_to profile_dashboard_index_path(@user) do %>
+						<%= link_to following_dashboard_index_path(@user) do %>
 							<span><%= @user.friends.count %></span>
 							<span>Following</span>
 						<% end %>
 					</li>
 					<li role="presentation">
-						<%= link_to profile_dashboard_index_path(@user) do %>
+						<%= link_to follower_dashboard_index_path(@user) do %>
 							<span><%= @user.inverse_friends.count %></span>
 							<span>Follower</span>
 						<% end %>
@@ -59,10 +59,12 @@
 					<li class="kiuy">
 						<div class="col-md-3 left-gogo">
 							<%= link_to (image_tag following.friend.profile.url(:thumb), class: "foll-img"), profile_dashboard_index_path(following.friend) %>
-							<%= link_to "Following", following, method: :delete, class: "unfollow" %>
+							<% if user_signed_in? && current_user.id == @user.id %>
+								<%= link_to "Unfollow", following, method: :delete, class: "unfollow" %>
+							<% end %>
 						</div>
 						<div class="col-md-5 center-gogo">
-							<%= link_to following.friend.firstname + ' ' + following.friend.lastname, profile_dashboard_index_path(following.friend), class: "fol-name" %>
+							<%= link_to following.friend.firstname.capitalize + ' ' + following.friend.lastname.capitalize, profile_dashboard_index_path(following.friend), class: "fol-name" %>
 							<ul class="list-inline krek">
 								<% unless following.friend.behance.blank? %>
 								<li><%= link_to (image_tag "behance.svg", class: "fck"), "http://#{following.friend.behance}", target: "blank" %></li>

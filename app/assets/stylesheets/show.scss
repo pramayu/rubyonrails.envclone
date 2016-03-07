@@ -222,6 +222,12 @@ $border : #E1E8ED;
 						font-family: $font-stack;
 						text-decoration: none;
 					}
+					.xis {
+						border: none;
+						background-color: #c0392b;
+						outline: none;
+						line-height: normal;
+					}
 				}
 				.overall {
 					@extend .dodo2;

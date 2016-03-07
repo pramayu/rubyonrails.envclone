@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
-	before_action :find_user, only: [ :index, :show, :profile, :following]
-	before_action :authenticate_user!, except: [:profile, :following]
+	before_action :find_user, only: [ :index, :show, :profile, :following, :follower, :portofolio]
+	before_action :authenticate_user!, except: [:profile]
 
 	layout "themes"
 
@@ -27,6 +27,14 @@ class DashboardController < ApplicationController
 
 	def following
 
+	end
+
+	def follower
+
+	end
+
+	def portofolio
+		@themes = @user.themes.order("created_at desc").paginate(:page => params[:page], :per_page => 30)
 	end
 
 	private

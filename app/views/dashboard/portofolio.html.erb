@@ -1,0 +1,163 @@
+<div class="head xcsd">
+	<div class="container con-custom-detail">
+		<div class="uclok">
+			<h4>
+				<span><%= link_to "Home", themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+				<% if user_signed_in? %>
+					<span><%= link_to "My Account", dashboard_path(@user.id) %></span>
+				<% end %>
+			</h4>
+			<h2 class="profile_heading"><%= @user.profile_heading.capitalize %></h2>
+		</div>
+		<div class="tab-panel">
+			<ul class="nav nav-tabs" role="tablist">
+				<% if user_signed_in? && current_user.id == @user.id %>
+					<li role="presentation"><%= link_to "Dashboard", dashboard_path(@user) %></li>
+					<li role="presentation" class="active"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Settings", edit_profile_path(current_user.username) %></li>
+					<li role="presentation">
+						<%= link_to following_dashboard_index_path(@user) do %>
+							<span><%= @user.friends.count %></span>
+							<span>Following</span>
+						<% end %>
+					</li>
+					<li role="presentation">
+						<%= link_to follower_dashboard_index_path(@user) do %>
+							<span><%= @user.inverse_friends.count %></span>
+							<span>Follower</span>
+						<% end %>
+					</li>
+					<li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Earnings", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Statement", dashboard_path(@user) %></li>
+				<% elsif user_signed_in? %>
+					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation" class="active"><%= link_to "Portofolio", portofolio_dashboard_index_path(@user) %></li>
+					<li role="presentation">
+						<%= link_to following_dashboard_index_path(@user) do %>
+							<span><%= @user.friends.count %></span>
+							<span>Following</span>
+						<% end %>
+					</li>
+					<li role="presentation">
+						<%= link_to follower_dashboard_index_path(@user) do %>
+							<span><%= @user.inverse_friends.count %></span>
+							<span>Follower</span>
+						<% end %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main-detail xoxoi jijik">
+	<div class="fret">
+		<div class="container con-custom-detail">
+			<div class="col-md-6 edit-left porto-left">
+				<div class="row">
+					<% @themes.each do |theme| %>
+					<div class="col-xs-6 col-md-3 boop">
+						<div class="thumbnail thumb-fret port-pret">
+							<a href="#">
+								<%= image_tag theme.thumb.url(:large) %>
+							</a>
+							<%= link_to theme_path(theme), class: "name-pla pot-pla" do %>
+							<p class="iu oi"><%= theme.name %></p>
+							<em class="coit"><span class="joi"><%= theme.category.name %></span><i class="fa fa-angle-right"></i><span class="joi"><%= theme.subcategory.name %></span></em>
+							<% end %>
+							<div class="propo">
+								<div class="pull-left">
+									<div class="money">
+										<span class="uang">$<%= theme.price %></span>
+									</div>
+								</div>
+								<div class="pull-right">
+									<ul class="list-inline">
+										<li class="like-bro okok bind-<%= theme.id %>" id="like-<%= theme.id %>">
+											<% if user_signed_in? %>
+											<% if current_user.voted_up_on?(theme)  %>
+											<%= link_to '', dislike_theme_path(theme), method: :get, class: "like-btn down-votes", id: "downvotes-yo" %>
+											<% elsif current_user.voted_down_on?(theme) %>
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man", id: "upvotes-yo" %>
+											<% else %>
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man" %>
+											<% end %>
+											<% else %>
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man" %>
+											<% end %>
+										</li>
+										<li class="coll-bro okok">
+											<%= link_to "", themes_path, class: "collect-btn" %>
+										</li>
+										<li class="buy-bro okok">
+											<%= link_to "", themes_path, class: "buy-btn" %>
+										</li>
+									</ul>
+								</div>
+								<div class="clear">	</div>
+							</div>
+						</div>
+						<div class="the-seller">
+							<div class="img-pu">
+								<%= image_tag "xj.jpg", class: "img-pi" %>
+								<span class="nam">by <%= theme.user.firstname.capitalize + ' ' +theme.user.lastname.capitalize  %></span>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="col-md-6 edit-right porto-right">
+				<div class="abt-aut">
+					<div class="ttl">
+						<h4>About Author</h4>
+					</div>
+					<div class="atf-con">
+						<%= link_to (image_tag @user.profile.url(:thumb), class: "img-ahh"), profile_dashboard_index_path(@user), class: "wtf-ahh" %>
+						<span class="wtf-name"><%= @user.firstname.capitalize + ' ' + @user.lastname.capitalize %></span>
+						<% unless @user.available_freelance.blank? %>
+							<p class="boo cool">Freelance: <span>I am available</span></p>
+						<% end %>
+						<ul class="list-inline yuhuu xxst">
+							<% unless @user.behance.blank? %>
+								<li><%= link_to (image_tag "behance.svg", class: "fck"), "http://#{@user.behance}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.deviantart.blank? %>
+								<li><%= link_to (image_tag "deviantart.svg", class: "fck"), "http://#{@user.deviantart}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.dribbble.blank? %>
+								<li><%= link_to (image_tag "dribbble.svg", class: "fck"), "http://#{@user.dribbble}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.facebook.blank? %>
+								<li><%= link_to (image_tag "facebook.svg", class: "fck"), "http://#{@user.facebook}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.github.blank? %>
+								<li><%= link_to (image_tag "github.svg", class: "fck"), "http://#{@user.github}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.googleplus.blank? %>
+								<li><%= link_to (image_tag "googleplus.svg", class: "fck"), "http://#{@user.googleplus}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.linkedin.blank? %>
+								<li><%= link_to (image_tag "linkedin.svg", class: "fck"), "http://#{@user.linkedin}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.twitter.blank? %>
+								<li><%= link_to (image_tag "twitter.svg", class: "fck"), "http://#{@user.twitter}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.youtube.blank? %>
+								<li><%= link_to (image_tag "youtube.svg", class: "fck"),"http://#{ @user.youtube}", target: "blank" %></li>
+							<% end %>
+							<% unless @user.reddit.blank? %>
+								<li><%= link_to (image_tag "reddit.svg", class: "fck"), "http://#{@user.reddit}", target: "blank" %></li>
+							<% end %>
+						</ul>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>

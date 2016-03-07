@@ -1,0 +1,119 @@
+<div class="head xcsd">
+	<div class="container con-custom-detail">
+		<div class="uclok">
+			<h4>
+				<span><%= link_to "Home", themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+				<span><%= link_to "My Account", dashboard_path(@user.id) %></span>
+			</h4>
+			<h2 class="profile_heading"><%= @user.profile_heading.capitalize %></h2>
+		</div>
+		<div class="tab-panel">
+			<ul class="nav nav-tabs" role="tablist">
+				<% if user_signed_in? && current_user.id == @user.id %>
+					<li role="presentation"><%= link_to "Dashboard", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Settings", edit_profile_path(current_user.username) %></li>
+					<li role="presentation">
+						<%= link_to following_dashboard_index_path(@user) do %>
+							<span><%= @user.friends.count %></span>
+							<span>Following</span>
+						<% end %>
+					</li>
+					<li role="presentation" class="active">
+						<%= link_to follower_dashboard_index_path(@user) do %>
+							<span><%= @user.inverse_friends.count %></span>
+							<span>Follower</span>
+						<% end %>
+					</li>
+					<li role="presentation"><%= link_to "Downloads", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Reviews", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Withdrawal", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Earnings", dashboard_path(@user) %></li>
+					<li role="presentation"><%= link_to "Statement", dashboard_path(@user) %></li>
+				<% else %>
+					<li role="presentation"><%= link_to "Profile", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Portofolio", portofolio_dashboard_index_path(@user) %></li>
+					<li role="presentation">
+						<%= link_to following_dashboard_index_path(@user) do %>
+							<span><%= @user.friends.count %></span>
+							<span>Following</span>
+						<% end %>
+					</li>
+					<li role="presentation" class="active">
+						<%= link_to follower_dashboard_index_path(@user) do %>
+							<span><%= @user.inverse_friends.count %></span>
+							<span>Follower</span>
+						<% end %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container con-custom-detail vdfa">
+	<div class="col-md-6 edit-left follow-left">
+		<div class="follow-main">
+			<ul class="frend-foll">
+				<% @user.inverse_friends.each do |follower| %>
+					<li class="kiuy">
+						<div class="col-md-3 left-gogo">
+							<%= link_to (image_tag follower.profile.url(:thumb), class: "foll-img"), profile_dashboard_index_path(follower) %>
+							<%= link_to "Follow", friendships_path(:friend_id => @user), method: :post, class: "foll-wing" %>
+						</div>
+						<div class="col-md-5 center-gogo">
+							<%= link_to follower.firstname.capitalize + ' ' + follower.lastname.capitalize, profile_dashboard_index_path(follower), class: "fol-name" %>
+							<ul class="list-inline krek">
+								<% unless follower.behance.blank? %>
+								<li><%= link_to (image_tag "behance.svg", class: "fck"), "http://#{follower.behance}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.deviantart.blank? %>
+								<li><%= link_to (image_tag "deviantart.svg", class: "fck"), "http://#{follower.deviantart}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.dribbble.blank? %>
+								<li><%= link_to (image_tag "dribbble.svg", class: "fck"), "http://#{follower.dribbble}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.facebook.blank? %>
+								<li><%= link_to (image_tag "facebook.svg", class: "fck"), "http://#{follower.facebook}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.github.blank? %>
+								<li><%= link_to (image_tag "github.svg", class: "fck"), "http://#{follower.github}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.googleplus.blank? %>
+								<li><%= link_to (image_tag "googleplus.svg", class: "fck"), "http://#{follower.googleplus}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.linkedin.blank? %>
+								<li><%= link_to (image_tag "linkedin.svg", class: "fck"), "http://#{follower.linkedin}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.twitter.blank? %>
+								<li><%= link_to (image_tag "twitter.svg", class: "fck"), "http://#{follower.twitter}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.youtube.blank? %>
+								<li><%= link_to (image_tag "youtube.svg", class: "fck"),"http://#{ follower.youtube}", target: "blank" %></li>
+								<% end %>
+								<% unless follower.reddit.blank? %>
+								<li><%= link_to (image_tag "reddit.svg", class: "fck"), "http://#{follower.reddit}", target: "blank" %></li>
+								<% end %>
+							</ul>
+						</div>
+						<div class="col-md-3 center2-gogo">
+							<p><span><%= follower.themes.count %></span> Items</p>
+							<p><span><%= follower.inverse_friends.count %></span> Followers</p>
+							<p>Member Since: <%= follower.created_at.strftime("%B - %Y") %></p>
+							<% unless follower.available_freelance.blank? %>
+								<p class="boo cool">Freelance: <span>I am available</span></p>
+							<% end %>
+						</div>
+						<div class="col-md-5 right-gogo">
+							<h3>2,308</h3>
+							<span>Sales</span>
+						</div>
+						<div class="clear"></div>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+<%= render 'themes/modal' %>

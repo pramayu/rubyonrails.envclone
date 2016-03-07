@@ -57,7 +57,17 @@
 								<div class="pull-right">
 									<ul class="list-inline">
 										<li class="like-bro okok bind-<%= theme.id %>" id="like-<%= theme.id %>">
-											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes" %>
+											<% if user_signed_in? %>
+												<% if current_user.voted_up_on?(theme)  %>
+													<%= link_to '', dislike_theme_path(theme), method: :get, class: "like-btn down-votes", id: "downvotes-yo" %>
+												<% elsif current_user.voted_down_on?(theme) %>
+													<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man", id: "upvotes-yo" %>
+												<% else %>
+													<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man" %>
+												<% end %>
+											<% else %>
+												<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man" %>
+											<% end %>
 										</li>
 										<li class="coll-bro okok">
 											<%= link_to "", themes_path, class: "collect-btn" %>

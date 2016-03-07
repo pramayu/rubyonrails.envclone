@@ -191,18 +191,26 @@ $light:#edeff5;
 	text-align: center;
 }
 
-/*.down-votes {
+.down-votes {
 	color: #ea6052 !important;
 	text-decoration: none;
 	&:hover {
 		color: #ea6052 !important;
 	}
-}*/
+}
 
-.up-votes-man {
-	color: #ea6052 !important;
+a.up-votes-man {
+	color: #D4D4D4 !important;
 	text-decoration: none;
 	&:hover {
-		color: #ea6052;
+		color: #D4D4D4;
 	}
 }
+/*a.up-votes-man:active {
+    color: #ea6052 !important;
+	text-decoration: none;
+}
+a.up-votes-man:target {
+    color: #ea6052 !important;
+	text-decoration: none;
+}*/

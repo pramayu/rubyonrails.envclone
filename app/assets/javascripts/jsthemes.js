@@ -250,5 +250,9 @@ $(document).ready(function () {
 
 });
 
-
+$(document).ready(function(){
+	$('.up-votes-man').click(function(){
+		$(this).css('color','#ea6052');
+	});
+});
 

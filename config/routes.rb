@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     collection do
       get 'profile/:id', to: 'dashboard#profile', as: :profile
       get 'following/:id', to: 'dashboard#following', as: :following
+      get 'follower/:id', to: 'dashboard#follower', as: :follower
+      get 'portofolio/:id', to: 'dashboard#portofolio', as: :portofolio
     end
   end
 end
