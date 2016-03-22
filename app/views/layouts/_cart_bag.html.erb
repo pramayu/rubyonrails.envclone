@@ -1,0 +1,6 @@
+<%= link_to cart_path, class: "bag-cart" do %>
+	<i class="fa fa-shopping-bag"></i>
+	<% unless current_order.order_themes.size == 0 %>
+		<span class="bag_size"><%= "#{current_order.order_themes.size}" %></span>
+	<% end %>
+<% end %>

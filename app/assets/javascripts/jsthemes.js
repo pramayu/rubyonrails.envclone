@@ -7,13 +7,18 @@
 //= require jquery.turbolinks
 //= require_tree .
 //= require form
+//= require jquery.raty
+//= require ratyrate
 
 $(function(){
 	jQuery("html").niceScroll({cursorcolor:"#BDC3C7"});
 	jQuery("#frw").niceScroll({cursorcolor:"#BDC3C7"});
 	$("#carousel").carousel({
 		interval: 10000000
-	})
+	});
+	$("#thiscarousel").carousel({
+		interval: 10000000
+	});
 });
 
 // $(function(){
@@ -230,6 +235,15 @@ $(document).ready(function () {
 		}
 	);
 
+	$(".ten").hover(
+		function () {
+			$('ul.crs').slideDown('medium');
+		}, 
+		function () {
+			$('ul.crs').slideUp('medium');
+		}
+	);
+
 	$(".zero").hover(
 		function () {
 			$('ul.all_drp').slideDown('medium');
@@ -256,3 +270,8 @@ $(document).ready(function(){
 	});
 });
 
+$(document).ready(function(){
+	$('#btn-price').click(function(){
+		$('#cartModal').modal('show');
+	});
+});

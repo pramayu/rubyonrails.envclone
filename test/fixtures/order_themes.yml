@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theme_id: 
+  order_id: 
+  unit_price: 9.99
+  total_price: 9.99
+
+two:
+  theme_id: 
+  order_id: 
+  unit_price: 9.99
+  total_price: 9.99

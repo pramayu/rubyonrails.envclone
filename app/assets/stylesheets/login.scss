@@ -1,42 +1,45 @@
 $font-stack : Roboto, Helvetica, Arial;
-.new-session {
-	padding: 70px 270px;
-	margin-bottom: 180px;
-	.foes {
-		text-align: center;
-		padding-bottom: 30px;
-		h4 {
-			font-family: $font-stack;
-			color: #959AA6;
-			font-size: 30px;
-			font-weight: 300;
-			margin-bottom: 10px;
-		}
-		span {
-			font-weight: 300;
-			color: #959AA6;
-		}
-	}
-	.fow {
-		.joy {
-			padding: 25px 10px;
-			-moz-box-shadow:inset 0px 0px 4px #f2f2f2;
-			-webkit-box-shadow:inset 0px 0px 4px #f2f2f2;
-			box-shadow:inset 0px 0px 4px #f2f2f2;
-			border:1px solid #EAEAEA;
-			color: #999;
-			font-weight: 300;
-		}
-		.lpd {
-			padding-top: 30px;
-			.lpdb {
-				background-color: #87D37C;
-				outline: none;
-				padding: 13px 195px;
-				color: #fff;
-				border:none;
+.log-in-as {
+	padding: 30px 250px;
+	.new-session {
+		padding: 70px 40px;
+		margin-bottom: 180px;
+		.foes {
+			text-align: center;
+			padding-bottom: 30px;
+			h4 {
+				font-family: $font-stack;
+				color: #959AA6;
+				font-size: 30px;
 				font-weight: 300;
-				border-bottom: 2px solid #6EC362;
+				margin-bottom: 10px;
+			}
+			span {
+				font-weight: 300;
+				color: #959AA6;
+			}
+		}
+		.fow {
+			.joy {
+				padding: 25px 10px;
+				-moz-box-shadow:inset 0px 0px 4px #f2f2f2;
+				-webkit-box-shadow:inset 0px 0px 4px #f2f2f2;
+				box-shadow:inset 0px 0px 4px #f2f2f2;
+				border:1px solid #EAEAEA;
+				color: #999;
+				font-weight: 300;
+			}
+			.lpd {
+				padding-top: 30px;
+				.lpdb {
+					background-color: #87D37C;
+					outline: none;
+					padding: 13px 189px;
+					color: #fff;
+					border:none;
+					font-weight: 300;
+					border-bottom: 2px solid #6EC362;
+				}
 			}
 		}
 	}

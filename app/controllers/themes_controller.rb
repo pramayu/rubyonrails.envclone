@@ -1,10 +1,11 @@
 class ThemesController < ApplicationController
 
-	before_action :find_themes, only: [:show, :edit, :update, :delete, :upvote, :downvote]
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :find_themes, only: [:show, :edit, :update, :delete, :upvote, :downvote, :screenshot]
+	before_action :authenticate_user!, except: [:index, :show, :screenshot]
 	before_action :find_category
 
 	layout "themes"
+	layout false, only: [:screenshot]
 
 	def index
 		if params[:tag]
@@ -19,15 +20,19 @@ class ThemesController < ApplicationController
 			@themes = Theme.device_with(params[:device]).paginate(:page => params[:page], :per_page => 30)
 		elsif params[:categories]
 			@themes = Theme.where("category_id in (?)", params[:categories]).paginate(:page => params[:page], :per_page => 30)
+		elsif params[:subcategories]
+			@themes = Theme.where("subcategory_id in (?)", params[:subcategories]).paginate(:page => params[:page], :per_page => 30)
 		else
 			@themes = Theme.all.order("created_at desc").paginate(:page => params[:page], :per_page => 30)
 		end
+		@order_theme = current_order.order_themes.new
 	end
 
 	def show
 		@comments = Comment.where(theme_id: @theme)
 		@themes = Theme.all.order("created_at desc")
 		@random_themes = Theme.all.where(user_id: @theme.user.id).where.not(id: @theme.id).order("created_at").limit(2)
+		@order_theme = current_order.order_themes.new
 	end
 
 	def new
@@ -76,24 +81,28 @@ class ThemesController < ApplicationController
 		
 	end
 
-  def upvote
-  	@Theme = Theme.find(params[:id])
-    @theme.upvote_by current_user
-    respond_to do |format|
-    	format.html { redirect_to :back }
-    	format.json { head :no_content }
-    	format.js { render :layout => false }
-    end
-  end
+	def screenshot
+	
+	end
 
-  def downvote
-    @theme.downvote_by current_user
-    respond_to do |format|
-    	format.html { redirect_to :back }
-    	format.json { head :no_content }
-    	format.js { render :layout => false }
-    end
-  end
+	def upvote
+		@Theme = Theme.find(params[:id])
+		@theme.upvote_by current_user
+		respond_to do |format|
+			format.html { redirect_to :back }
+			format.json { head :no_content }
+			format.js { render :layout => false }
+		end
+	end
+
+	def downvote
+		@theme.downvote_by current_user
+		respond_to do |format|
+			format.html { redirect_to :back }
+			format.json { head :no_content }
+			format.js { render :layout => false }
+		end
+	end
 
 	private
 

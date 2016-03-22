@@ -33,6 +33,9 @@
 							<% end %>
 						</div>
 					</div>
+					<%= link_to screenshot_theme_path(@theme), class: "to_screen" do %>
+						<i class="fa fa-tags"></i>
+					<% end %>
 					<div class="slide-right">
 						<div class="frw" id="frw">
 							<ul class="indicator-car">
@@ -53,7 +56,10 @@
 			<div class="col-md-6 show-right">
 				<div class="price">
 					<div class="pri">
-						<%= link_to "Buy Now $#{@theme.price}", themes_path, class: "btn-price" %>
+						<%= form_for @order_theme, remote: true do |f| %>
+							<%= f.hidden_field :theme_id, value: @theme.id %>
+							<%= f.submit "Add to Cart $#{@theme.price}", class: "btn-price", id: "btn-price" %>
+						<% end %>
 					</div>
 					<ul class="check">
 						<li class="sora">Included: Quality checked by Envato</li>
@@ -84,7 +90,7 @@
 					<div class="overall">
 						<p class="ov-al">99% Overall Recommended</p>
 					</div>
-					<% unless @random_themes.count <= 1 %>
+					<% unless @random_themes.count < 1 %>
 						<div class="other-product">
 							<span class="tut">More from Nicky Laatz:</span>
 							<ul class="list-inline ouyt">
@@ -111,9 +117,14 @@
 							<span><%= @theme.comments.count %></span> Comments
 						</p>
 					</div>
-					<div class="rate-s">
+					<div class="like-s">
 						<p class="rate-f boo">
 							<span><span class="vcount-<%= @theme.id %>"><%= @theme.get_upvotes.size %></span></span> Buyer Likes
+						</p>
+					</div>
+					<div class="rate-s">
+						<p class="rate-fo boo pull-left">
+							<span>Buyer Rating <span><%= rating_for @theme, "quality", :enable_half => true %></span></span>
 						</p>
 					</div>
 				</div>
@@ -164,6 +175,6 @@
 	    </div>
 	</div>
 </div>
-
 <!-- modal -->
 <%= render 'themes/modal' %>
+<%= render 'themes/cartmodal' %>

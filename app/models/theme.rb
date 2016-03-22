@@ -1,10 +1,13 @@
 class Theme < ActiveRecord::Base
 
+  ratyrate_rateable "quality"
+
   acts_as_taggable
   acts_as_votable
 
   belongs_to :user
   has_many :comments
+  has_many :order_themes
 
   # category and subcategory to themes
   belongs_to :category

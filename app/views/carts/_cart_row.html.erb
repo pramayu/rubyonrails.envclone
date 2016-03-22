@@ -1,0 +1,16 @@
+<div class="well woho">
+    <div class="row">
+        <div class="col-xs-8 left-row">
+            <%= link_to (image_tag theme.thumb.url(:medium), class: "cart-img"), theme_path(theme) %>
+            <h4><%= link_to theme.name, theme_path(theme) %></h4>
+            <span>Item by <%= theme.user.firstname+ ' ' +theme.user.lastname %></span>
+            <h3><%= number_to_currency order_theme.unit_price %></h3>
+        </div>
+        <div class="col-xs-4">
+            <div class="rgh-cloe">
+                 <%= link_to "", order_theme, { data: { confirm: "Are you sure you wish to delete the theme '#{order_theme.theme.name}' from your cart?" }, method: :delete, remote: true, class: "btn-del-cart" } %>
+            </div>
+        </div>
+    </div>
+</div>
+

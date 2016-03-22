@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<%= stylesheet_link_tag    'screenshot', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'jsthemes', 'data-turbolinks-track' => true %>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="top-screen">
+		<div class="logo pull-left">
+			<h4><%= link_to "Envclone", themes_path %></h4>
+		</div>
+		<div class="separator"></div>
+		<div class="themes-name">
+			<p><%= link_to @theme.name, theme_path(@theme) %></p>
+			<span>by <%= link_to @theme.user.firstname.capitalize+ ' ' + @theme.user.lastname.capitalize, profile_dashboard_index_path(@theme.user) %></span>
+		</div>
+		<div class="lst-img">
+			<ul class="indicator-car ksoo">
+				<% @theme.assets.each_with_index do |tmb, index| %>
+				<li data-target="#thiscarousel" data-slide-to="<%= index %>" >
+					<%= image_tag tmb.preview.url(:medium) %>
+				</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="main-screen">
+		<div id="thiscarousel" class="carousel" data-ride="carousel">
+			<div class="carousel-inner" role="listbox">
+				<% @theme.assets.each_with_index  do |asset, index| %>
+					<div class="item <%= 'active' if index == 0  %>">
+						<%= image_tag asset.preview.url %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

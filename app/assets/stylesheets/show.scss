@@ -169,8 +169,10 @@ $border : #E1E8ED;
 					padding-top: 30px;
 					.btn-price {
 						padding: 15px 50px;
-						width: 100%;
+						width: 85%;
 						border-radius: 3px;
+						outline: none;
+						border:none;
 						background-color: #6C7A89;
 						font-family: "Roboto", Helvetica, Arial;
 						font-weight: bold;
@@ -288,6 +290,10 @@ $border : #E1E8ED;
 					@extend .dodo2;
 					@extend .btn-border;
 				}
+				.like-s {
+					@extend .dodo2;
+					@extend .btn-border;
+				}
 				.rate-s {
 					@extend .dodo2;
 				}
@@ -383,6 +389,13 @@ $border : #E1E8ED;
 	font-size: 1em !important;
 }
 
+.rate-fo:before {
+	content: "\f005";
+	margin-right: 10px;
+	@extend .icon-s;
+	font-size: 1em !important;
+}
+
 .cmks {
 /*	padding-top: 30px;
 	margin-top: 10px;
@@ -448,5 +461,39 @@ $border : #E1E8ED;
 			font-weight: bold;
 			border: none;
 		}
+	}
+}
+
+.raty-cancel {
+	display: none;
+}
+
+.star {
+	float: left;
+	margin-left: 5px;
+	margin-top: -3px;
+}
+
+.to_screen {
+	position: absolute;
+	z-index: 99;
+	width: 568px;
+	height: 378px;
+	left: 6px;
+	margin-top: 6px;
+	background-color: rgba(0,0,0,0.4);
+	text-align: center;
+	padding-top: 25%;
+	opacity: 0;
+	&:hover {
+		opacity:1;
+		-webkit-transition: all .3s ease-in-out;
+		-moz-transition: all .3s ease-in-out;
+		transition: all .3s ease-in-out;
+	}
+	.fa {
+		color: #555;
+		font-size: 3em;
+		opacity: .8;
 	}
 }

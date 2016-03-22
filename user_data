@@ -75,3 +75,22 @@
              html: { method: :delete }) do |f| %>
   <%= f.submit "Unfollow", class: "btn" %>
 <% end %>
+
+
+user-biasa
+- profile
+- envato account
+- setting 
+- downloads
+- favorites
+- collection
+- follow feed
+- statement
+- make deposit
+- become an author
+
+user as author 
+- author dashboard
+- uploads
+- earning
+withdrawals

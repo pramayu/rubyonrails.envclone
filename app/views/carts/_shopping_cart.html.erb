@@ -1,0 +1,55 @@
+<div class="vdfa cart-foo">
+  <% if !@order_theme.nil? && @order_theme.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+      <% @order_theme.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @order_themes.size == 0 %>
+    <div class="empty-cart">
+      <h3>Your shopping cart is empty</h3>
+      <p>
+        There are no items in your shopping cart.  Please <%= link_to "go back", themes_path %> and add some items to your cart.
+      </p>
+    </div>
+  <% else %>
+    <div class="col-md-6 edit-left profile-left cart-left">
+    <div class="cart-main">
+      <div class="cart-title">
+        <div class="cart-btn cart-left-a pull-left">
+          <%= link_to "Continue Shopping", themes_path %>
+        </div>
+        <div class="cart-btn cart-center-a pull-left">
+          <span>You have <%= @order_themes.size %> themes in your cart</span>
+        </div>
+        <div class="cart-btn cart-right-a pull-right">
+          <a href="#" class="empty-carts">Empty Cart</a>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="cart-content">
+        <% @order_themes.each do |order_theme| %>
+          <%= render 'carts/cart_row', theme: order_theme.theme, order_theme: order_theme, show_total: true %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+    <div class="col-md-6 edit-right profile-right cart-right">
+        <div class="total_price">
+            <div class="title-price">
+                <h4>Your Cart Total</h4>
+                <% @order_themes.limit(1).each do |price| %>
+                    <p><%=  number_to_currency price.order.subtotal %></p>
+                <% end %>
+                <div class="xvdf">
+                    <a href="#" class="checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>

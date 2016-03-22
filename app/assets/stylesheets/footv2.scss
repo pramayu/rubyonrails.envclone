@@ -1,0 +1,134 @@
+$font-stack : Roboto, Helvetica, Arial;
+footer {
+	padding: 35px 0px;
+	/*background-color: #d4d4cc;*/
+	background-color: #333;
+	/*margin-top: 180px;*/
+	.con-custom {
+		.top-foot {
+			border-bottom: 1px solid #454545;
+			padding-bottom: 10px;
+			margin-bottom: 15px;
+			.lgo-foot {
+				float: left;
+				width: 400px;
+				h4 {
+					a {
+						font-family: billabong, Roboto, Helvetica;
+						font-size: 32px;
+						color: #777;
+						text-decoration:none;
+					}
+				}
+			}
+			.count-mem-sale {
+				float: right;
+				ul {
+					margin-bottom: 0px;
+					li {
+						margin-left: 30px;
+						color: #999;
+						font-family: Roboto, Helvetica, Arial;
+						font-size: 14px;
+						span {
+							color: #fafafa;
+						}
+					}
+				}
+			}
+		}
+		.left-foot {
+			padding-left: 0px;
+			.this-left, .this-right {
+				padding-left: 0px;
+				width: 45%;
+				.foot-title {
+					margin-bottom: 15px;
+					margin-top: 20px;
+					h4 {
+						font-family: Roboto, Helvetica, Arial;
+						color: #999;
+						font-size: 16px;
+						font-weight: bold;
+					}
+				}
+				.ndg {
+					li {
+						a {
+							img {
+								width: 28px;
+							}
+						}
+					}
+				}
+				.meet {
+					list-style: none;
+					padding: 0px;
+					li {
+						margin-bottom: 5px;
+						a {
+							color: #fafafa;
+							font-family: $font-stack;
+							font-size: 13px;
+							font-weight: 300;
+							text-decoration: none;
+						}
+					}
+				}
+				.hjgd {
+					color: #999;
+					font-size: 13px;
+					font-weight: 300;
+				}
+				.form-news {
+					.form-group {
+						input[type=email] {
+							background-color: #262626;
+							border-radius: 3px;
+							margin-top: 10px;
+							color: #7e7e7e;
+							border:none;
+							outline: none;
+							box-shadow: none;
+						}
+					}
+					.form-action {
+						.btn-subs {
+							color: #fff;
+							border:none;
+							border-radius: 3px;
+							background-color: #82b440;
+							border-bottom: 2px solid #6f9a37;
+							padding: 4px 89px;
+							outline: none;
+						}
+					}
+				}
+			}
+		}
+		.right-foot {
+			padding-left: 0px;
+			.this-foo {
+				margin-bottom: 45px;
+				.top-img {
+					width: 150px;
+					float: left;
+					margin-right: 15px;
+				}
+				p {
+					color: #999;
+					font-size: 14px;
+					line-height: 23px;
+					font-family: $font-stack;
+					font-weight: 300;
+				}
+				a {
+					color: #fff;
+					font-family: $font-stack;
+					font-weight: 300;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

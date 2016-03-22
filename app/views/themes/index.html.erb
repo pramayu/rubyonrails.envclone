@@ -72,9 +72,6 @@
 										<li class="coll-bro okok">
 											<%= link_to "", themes_path, class: "collect-btn" %>
 										</li>
-										<li class="buy-bro okok">
-											<%= link_to "", themes_path, class: "buy-btn" %>
-										</li>
 									</ul>
 								</div>
 								<div class="clear">	</div>
@@ -82,7 +79,7 @@
 						</div>
 						<div class="the-seller">
 							<div class="img-pu">
-								<%= image_tag "xj.jpg", class: "img-pi" %>
+								<%= image_tag theme.user.profile.url(:thumb), class: "img-pi" %>
 								<span class="nam">by <%= theme.user.firstname.capitalize + ' ' +theme.user.lastname.capitalize  %></span>
 							</div>
 						</div>

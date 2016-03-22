@@ -1,0 +1,81 @@
+<div class="head xcsd">
+	<div class="container con-custom-detail">
+		<div class="uclok">
+			<h4>
+				<span><%= link_to "Home", themes_path %></span>
+				<i class="fa fa-angle-double-right"></i>
+			</h4>
+			<h2 class="profile_heading">Favorites</h2>
+		</div>
+		<div class="tab-panel">
+			<ul class="nav nav-tabs" role="tablist">
+				<% if user_signed_in? && current_user.id == @user.id %>
+					<li role="presentation" class="active"><%= link_to "Your Favorites", favorite_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Your Collections", profile_dashboard_index_path(@user) %></li>
+					<li role="presentation"><%= link_to "Follow Feed", edit_profile_path(current_user.username) %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="main-detail xoxoi jijik">
+	<div class="fret">
+		<div class="container con-custom-detail">
+			<div class="col-md-6 edit-left porto-left fav_">
+				<div class="row">
+					<% @user.votes.up.votables.each do |theme| %>
+					<div class="col-xs-6 col-md-3 boop fav_boo">
+						<div class="thumbnail thumb-fret port-pret">
+							<a href="#">
+								<%= image_tag theme.thumb.url(:large) %>
+							</a>
+							<%= link_to theme_path(theme), class: "name-pla pot-pla" do %>
+							<p class="iu oi"><%= theme.name %></p>
+							<em class="coit"><span class="joi"><%= theme.category.name %></span><i class="fa fa-angle-right"></i><span class="joi"><%= theme.subcategory.name %></span></em>
+							<% end %>
+							<div class="propo">
+								<div class="pull-left">
+									<div class="money">
+										<span class="uang">$<%= theme.price %></span>
+									</div>
+								</div>
+								<div class="pull-right">
+									<ul class="list-inline">
+										<li class="like-bro okok bind-<%= theme.id %>" id="like-<%= theme.id %>">
+											<% if user_signed_in? %>
+											<% if current_user.voted_up_on?(theme)  %>
+											<%= link_to '', dislike_theme_path(theme), method: :get, class: "like-btn down-votes", id: "downvotes-yo" %>
+											<% elsif current_user.voted_down_on?(theme) %>
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man", id: "upvotes-yo" %>
+											<% else %>
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man" %>
+											<% end %>
+											<% else %>
+											<%= link_to '',like_theme_path(theme), :remote => true, method: :get, class: "like-btn up-votes-man" %>
+											<% end %>
+										</li>
+										<li class="coll-bro okok">
+											<%= link_to "", themes_path, class: "collect-btn" %>
+										</li>
+										<li class="buy-bro okok">
+											<%= link_to "", themes_path, class: "buy-btn" %>
+										</li>
+									</ul>
+								</div>
+								<div class="clear">	</div>
+							</div>
+						</div>
+						<div class="the-seller">
+							<div class="img-pu">
+								<%= image_tag "xj.jpg", class: "img-pi" %>
+								<span class="nam">by <%= theme.user.firstname.capitalize + ' ' +theme.user.lastname.capitalize  %></span>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>

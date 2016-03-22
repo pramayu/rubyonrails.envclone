@@ -31,6 +31,13 @@ a {
 	text-decoration: none;
 	font-family: "Museo Sans", Roboto, Helvetica, Arial;
 }
+.divider-foo {
+	position: absolute;
+	width: 1px;
+	height: 25px;
+    margin: 13px 10px;
+	background: #dedede
+}
 .nav1 {
 	background-color: #262626;
 	border-radius: 0px;
@@ -44,16 +51,17 @@ a {
 @media(min-width: 768px) {
 	.nav1 .menu1 li > a {
 		font-size: 12.5px;
-		font-family: "Museo Sans", Roboto, Helvetica, Arial;
+		font-family: "Helvetica Neue", "Museo Sans", Roboto, Helvetica, Arial;
 		color: #999999;
 		text-decoration: none;
 		&:hover {
 			color:#fff;
 		}
 	}
-	.nav1 .menu2 li  a {
+	.nav1 .menu2 li > a {
 		background-color: #333333;
 		border-radius: 3px;
+		font-family: "Helvetica Neue", "Museo Sans", Roboto, Helvetica, Arial;
 		margin: 6.5px 1px;
 		padding: 8px 13px;
 		font-size: 12.5px;
@@ -108,7 +116,7 @@ a {
 	.nav2 {
 		min-height: 47px;
 		border-radius: 0px;
-		background-color: #333333;
+		background-color: #262626;
 		border: none;
 		margin: 0px;
 	}
@@ -118,6 +126,7 @@ a {
 		/* padding: 10px 0px; */
 		padding-right: 0px;
 		padding-left: 0px;
+		font-family: "Helvetica Neue", "Museo Sans", Roboto, Helvetica, Arial;
 		/*font-family: $font-stack;*/
 		&:hover {
 			color:#fff;
@@ -165,8 +174,8 @@ a {
 	.nav2 .menu3 li >a.pd,
 	.nav2 .menu3 li >a.td,
 	.nav2 .menu3 li >a.ad {
-		padding-left: 10.4px;
-		padding-right: 10.3px;
+		padding-left: 12.6px;
+		padding-right: 13.3px;
 	}
 	.nav3 {
 		border: none;
@@ -426,7 +435,30 @@ a {
 	@extend .icond;
 	content: "\f19c";
 }
+.ten {
+	margin-left: 20px;
+}
+.ten:after {
+	content: "New";
+	position: absolute;
+	color: #dedede;
+    font-family: "Helvetica Neue", Roboto, Helvetica, Arial;
+    font-size: 11px;
+    top: 12px;
+    right: -35px;
+    padding: 5px 9px;
+    border-radius: 3px;
+    background: #545454;
+    cursor: pointer;
+}
+.fav_ {
+	width: 100% !important;
+	.fav_boo {
+		width: 20% !important;
+	}
+}
 @import "footer";
+@import "footv2";
 @import "new";
 @import "edit";
 @import "category";
@@ -435,3 +467,4 @@ a {
 @import "dashboard";
 @import "login";
 @import "modal";
+@import "cart";

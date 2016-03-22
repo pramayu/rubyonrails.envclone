@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304090432) do
+ActiveRecord::Schema.define(version: 20160320074218) do
 
   create_table "assets", force: :cascade do |t|
     t.integer  "theme_id",             limit: 4
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20160304090432) do
   end
 
   add_index "assets", ["theme_id"], name: "index_assets_on_theme_id", using: :btree
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "avg",           limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "browsers", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -144,6 +153,58 @@ ActiveRecord::Schema.define(version: 20160304090432) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  create_table "order_themes", force: :cascade do |t|
+    t.integer  "theme_id",    limit: 4
+    t.integer  "order_id",    limit: 4
+    t.decimal  "unit_price",            precision: 12, scale: 3
+    t.decimal  "total_price",           precision: 12, scale: 3
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
+  add_index "order_themes", ["order_id"], name: "index_order_themes_on_order_id", using: :btree
+  add_index "order_themes", ["theme_id"], name: "index_order_themes_on_theme_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal  "subtotal",   precision: 12, scale: 3
+    t.decimal  "total",      precision: 13, scale: 3
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "overall_avg",   limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "stars",         limit: 24,  null: false
+    t.string   "dimension",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.integer  "cacheable_id",   limit: 4
+    t.string   "cacheable_type", limit: 255
+    t.float    "avg",            limit: 24,  null: false
+    t.integer  "qty",            limit: 4,   null: false
+    t.string   "dimension",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "softwares", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -303,6 +364,8 @@ ActiveRecord::Schema.define(version: 20160304090432) do
   add_foreign_key "fileincludethemes", "themes"
   add_foreign_key "frameworkthemes", "frameworks"
   add_foreign_key "frameworkthemes", "themes"
+  add_foreign_key "order_themes", "orders"
+  add_foreign_key "order_themes", "themes"
   add_foreign_key "softwarethemes", "softwares"
   add_foreign_key "softwarethemes", "themes"
   add_foreign_key "subcategories", "categories"

@@ -51,7 +51,7 @@ $font-stack: "Roboto", Helvetica, Arial;
 					}
 					.log-form {
 						padding: 25px 0px;
-						padding-bottom: 60px;
+						padding-bottom: 107px;
 						.ljds {
 							margin: 0px;
 							input {
@@ -224,4 +224,42 @@ $font-stack: "Roboto", Helvetica, Arial;
 	-moz-animation-name: shake;
 	-o-animation-name: shake;
 	animation-name: shake;
+}
+.left-modal {
+	background: image_url('modal-header.png');
+	height: 542px;
+	background: #31848d image_url('modal-header.png');
+    background: image_url('modal-header.png'),-moz-linear-gradient(top,#68c2bb 0,#31848d 100%);
+    background: image_url('modal-header.png'),-webkit-gradient(linear,left top,left bottom,color-stop(0%,#68c2bb),color-stop(100%,#31848d));
+    background: image_url('modal-header.png'),-webkit-linear-gradient(top,#68c2bb 0,#31848d 100%);
+    background: image_url('modal-header.png'),-o-linear-gradient(top,#68c2bb 0,#31848d 100%);
+    background: image_url('modal-header.png'),-ms-linear-gradient(top,#68c2bb 0,#31848d 100%);
+    background: image_url('modal-header.png'),linear-gradient(top,#68c2bb 0,#31848d 100%);
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    padding: 40px 20px !important;
+    .wel-com{
+    	text-align: center;
+    	h4 {
+    		color: #fff;
+    		font-family: $font-stack;
+    		font-weight: 300;
+    		font-size: 28px;
+    		line-height: 40px;
+    	}
+    }
+    .benef {
+    	p {
+    		color: #fff;
+    		font-family: $font-stack;
+    		font-size: 16px;
+    		font-weight: 600;
+    	}
+    	ul {
+    		li {
+    			color: #fff;
+    			font-weight: 300;
+    		}
+    	}
+    }
 }

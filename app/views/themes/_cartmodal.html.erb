@@ -1,0 +1,35 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="cartModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa fa-check"></i>
+                    <h4>Item added to your cart</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6 left_i">
+                    <%= image_tag @theme.thumb.url(:medium), class: "modal-cart-img" %>
+                    <p class="t_0"><%= @theme.name %></p>
+                    <span>by <%= @theme.user.firstname+ ' ' +@theme.user.lastname %></span>
+                </div>
+                <div class="col-md-6 right_i">
+                    <h4 class="price-mdl"><span>$</span><%= @theme.price %></h4>
+                    <h4 class="foo-mdl">License: <%= link_to "Regular", themes_path %></h4>
+                    <h4 class="foo-mdl">Support: <span>6 months support</span></h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+ <!--            <div class="ext-license">
+                <div class="khg">
+                    <input type="checkbox"><span>Extend support to 12 months. +$16.80 Save $22.40 off regular price.</span>
+                </div>
+            </div> -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default left-bgh pull-left" data-dismiss="modal">Keep Browsing</button>
+                <%= link_to "Go to Checkout", cart_path, class: "btn btn-primary pull-right right-bgh" %>
+                <div class="clear"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
